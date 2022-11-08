@@ -530,8 +530,8 @@ ELSE
 			{
 				usesammo // If weapon is known, draw ammo bar in color
 				{
-						drawstring DIGIFONT_LARGE, SaeHUDGr, globalarray 42, 268, 173;
-						InInventory sae_PrimaryAmmoGreen
+					drawstring DIGIFONT_LARGE, SaeHUDGr, globalarray 42, 268, 173;
+					InInventory sae_PrimaryAmmoGreen
 					{
 						drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo1, Alignment(left), fillzeros, 246, 181;
 					}
@@ -599,9 +599,10 @@ ELSE
 				*/
 				InInventory DualWieldingDMRs
 				{
-					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, 287, 175;
-					drawstring digifont_small, SaeHUDGr, "/", 289, 175;
-					drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 289, 175;
+					// drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, 246, 181;
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 263, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, Alignment(right), fillzeros, 260, 181;
+					// drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 289, 175;
 				}
 			}
 			/*
@@ -1894,9 +1895,10 @@ ELSE
 				*/
 				InInventory DualWieldingDMRs
 				{
-					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, 255, 185;
-					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-					drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 257, 185;
+					// drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, 246, 181;
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 263, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, Alignment(right), fillzeros, 260, 181;
+					// drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 257, 185;
 				}
 			}
 			IsSelected DualMagnums
@@ -4265,9 +4267,10 @@ ELSE
 				*/
 				InInventory DualWieldingDMRs
 				{
-					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, 255, 185;
-					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-					drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 257, 185;
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 263, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, Alignment(right), fillzeros, 260, 181;
+					// drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, 255, 185;
+					// drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 257, 185;
 				}
 			}
 			IsSelected DualMagnums
