@@ -231,7 +231,7 @@ int sae_SecAmmoCap[8];
 	{"DualMagnums",							"PistolBullets",				"AkimboAMmo",				"Yes",	"DUALR",	"PlaceHolder"},// 32 -7
 	{"DualAutoShotguns",					"NewShell",						"DoubleASGAmmo",			"Yes",	"DUALA",	"PlaceHolder"},// 33 -8
 	{"DualSSG",								"NewShell",						"DualSSGAmmo",				"Yes",	"DUALS",	"PlaceHolder"},// 34 -9
-	{"DualRifles",							"NewClip",						"DoubleRifleAmmo",			"Yes",	"DUALU",	"PlaceHolder"},// 35 -10
+	{"DualWieldingDMRs",					"NewClip",						"DoubleRifleAmmo",			"Yes",	"DUALU",	"PlaceHolder"},// 35 -10
 	{"DualCarbines",						"NewClip",						"DoubleCarbineAmmo",		"Yes",	"DUALC",	"PlaceHolder"},// 36 -11
 	{"DualPlasmaRifles",					"Cell",							"DoublePlasmaGunAmmo",		"Yes",	"DLPLS",	"PlaceHolder"},// 37 -12
 	{"DualPlasmaRifles",					"Cell",							"DoublePulseCannonAmmo",	"Yes",	"DLPUL",	"PlaceHolder"},

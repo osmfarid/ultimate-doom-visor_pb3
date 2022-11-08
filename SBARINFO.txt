@@ -587,7 +587,7 @@ ELSE
 				}
 				*/
 			}
-			IsSelected DualRifles
+			IsSelected Rifle
 			{
 				/*
 				InInventory sae_BDv20
@@ -597,7 +597,7 @@ ELSE
 				drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 289, 175;
 				}
 				*/
-				InInventory sae_PA1N
+				InInventory DualWieldingDMRs
 				{
 					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, 287, 175;
 					drawstring digifont_small, SaeHUDGr, "/", 289, 175;
@@ -1882,7 +1882,7 @@ ELSE
 				*/
 			}
 			//////////////////DUAL AMMO DISPLAY TO SHOW EACH WEAPON///////////////////////////////////
-			IsSelected DualRifles
+			IsSelected Rifle
 			{
 				/*
 				InInventory sae_BDv20
@@ -1892,7 +1892,7 @@ ELSE
 					drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 257, 185;
 				}
 				*/
-				InInventory sae_PA1N
+				InInventory DualWieldingDMRs
 				{
 					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, 255, 185;
 					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
@@ -3090,7 +3090,7 @@ ELSE
 				}
 				*/
 			}
-			IsSelected DualRifles
+			IsSelected Rifle
 			{
 				/*
 				InInventory sae_BDv20
@@ -4253,7 +4253,7 @@ ELSE
 				*/
 			}
 			//////////////////DUAL AMMO DISPLAY TO SHOW EACH WEAPON///////////////////////////////////
-			IsSelected DualRifles
+			IsSelected Rifle
 			{
 				/*
 				InInventory sae_BDv20
@@ -4263,7 +4263,7 @@ ELSE
 					drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, alignment(left), 257, 185;
 				}
 				*/
-				InInventory sae_PA1N
+				InInventory DualWieldingDMRs
 				{
 					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, 255, 185;
 					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
