@@ -854,9 +854,9 @@ ELSE
 						drawstring digifont_small, SaeHUDGR, "BRST", 267, 184;
 					}
 				}
-				IsSelected SSG
+				IsSelected PB_SSG
 				{
-					InInventory DualSSGChecker, 3
+					InInventory DualWieldingSSG, 1
 					{
 						drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
 					}
@@ -2145,9 +2145,9 @@ ELSE
 						drawstring digifont_small, SaeHUDGR, "BRST", 304, 184;
 					}
 				}
-				IsSelected SSG
+				IsSelected PB_SSG
 				{
-					InInventory DualSSGChecker, 3
+					InInventory DualWieldingSSG, 1
 					{
 						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
 					}
@@ -3347,9 +3347,9 @@ ELSE
 						drawstring digifont_small, SaeHUDGR, "BRST", 267, 184;
 					}
 				}
-				IsSelected SSG
+				IsSelected PB_SSG
 				{
-					InInventory DualSSGChecker, 3
+					InInventory DualWieldingSSG, 1
 					{
 						drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
 					}
@@ -4515,9 +4515,9 @@ ELSE
 						drawstring digifont_small, SaeHUDGR, "BRST", 304, 184;
 					}
 				}
-				IsSelected SSG
+				IsSelected PB_SSG
 				{
-					InInventory DualSSGChecker, 3
+					InInventory DualWieldingSSG, 1
 					{
 						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
 					}
