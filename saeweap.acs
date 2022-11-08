@@ -173,7 +173,7 @@ int sae_SecAmmoCap[8];
 /* PB */
 	#define UAC_EXP_WEAPONS 2 // Number of special circumstance weapons (Pipebombs and Satchel Charge)
 
-	#define PB_NumOfWeap	81
+	#define PB_NumOfWeap	82
 	#define PB_StandWeap 28 //Number of standard weapons to show in weaponslist
 
 	// Weapons list - Columns descriptions are as follows:
@@ -185,35 +185,36 @@ int sae_SecAmmoCap[8];
 
 	str PB_weaponslist[PB_NumOfWeap][6] =
 	{
-	{"BrutalAxe",							"NoPrimary",					"NoSecondary",				"No",	"AXE",		"Fire Axe"},//	0
-	{"Chain_Saw",							"NoPrimary",					"NoSecondary",				"No",	"SAW",		"Chainsaw"},//	0
-	{"BDPistol",							"PistolBullets",				"PrimaryPistolAmmo",		"Yes",	"PISTL",	"Pistol"},//	3
-	{"Revolver",							"PistolBullets",				"RevolverAmmo",				"Yes",	"RVLVR",	"Revolver"},//	2
-	{"Deagle",								"PistolBullets",				"DeagleAmmo",				"Yes",	"DEAGL",	"Desert Eagle"},
-	{"CompactSMG",							"PistolBullets",				"SMGAmmo",					"Yes",	"SMG",		"Compact SMG"},//	1
-	{"Shot_Gun",							"NewShell",						"ShotgunAmmo",				"Yes",	"SHOT",		"Shotgun"},//	5
-	{"AutoShotgun",							"NewShell",						"AutoShotgunAmmo",			"Yes",	"AUTO",		"Auto Shotgun"},//	4
-	{"SSG",									"NewShell",						"SSGAmmoCounter",			"Yes",	"SSG",		"Sawed-Off"},//	6
-	{"Quad_SSG",							"NewShell",						"QSSGAmmoCounter",			"Yes",	"QUAD",		"Quad Shotgun"},
+	{"PB_Chainsaw",							"Gas",							"NoSecondary",				"No",	"SAW",		"Chainsaw"},//	0
+	{"PB_Axe",								"NoPrimary",					"NoSecondary",				"No",	"AXE",		"Fire Axe"},//	0
+	{"PB_SMG",								"PistolBullets",				"SMGAmmo",					"Yes",	"SMG",		"UAC-17 SMG"},//	1
+	{"PB_MP40",								"PistolBullets",				"MP40Ammo",					"Yes",	"MP40",		"Maschinenpistole 40"},//	7
+	{"PB_Revolver",							"PistolBullets",				"RevolverAmmo",				"Yes",	"RVLVR",	"Revolver"},//	2
+	{"PB_Pistol",							"PistolBullets",				"PrimaryPistolAmmo",		"Yes",	"PISTL",	"UAC .45 Pistol"},//	3
+	{"PB_Deagle",							"PistolBullets",				"DeagleAmmo",				"Yes",	"DEAGL",	"Desert Eagle .50"},
+	{"PB_QuadSG",							"NewShell",						"QSSGAmmoCounter",			"Yes",	"QUAD",		"Quad-Barrel Shotgun"},
+	{"PB_SSG",								"NewShell",						"SSGAmmoCounter",			"Yes",	"SSG",		"Sawed-Off Shotgun"},//	6
+	{"PB_Autoshotgun",						"NewShell",						"AutoShotgunAmmo",			"Yes",	"AUTO",		"Auto-Shotgun"},//	4
+	{"PB_Shotgun",							"NewShell",						"ShotgunAmmo",				"Yes",	"SHOT",		"Shotgun"},//	5
+	{"PB_Carbine",							"NewClip",						"XRifleAmmo",				"Yes",	"UAC41",	"UAC41 Carbine"},//	9
 	{"Rifle",								"NewClip",						"RifleAmmo",				"Yes",	"UAC30",	"UAC30 DMR"},//	10
-	{"Mini_Gun",							"NewClip",						"NoSecondary",				"No",	"MINI",		"Minigun"},//	8
-	{"Carbine",								"NewClip",						"XRifleAmmo",				"Yes",	"UAC41",	"UAC41 Carbine"},//	9
-	{"LMG",									"NewClip",						"LMGAmmo",					"Yes",	"UC349",	"UAC349 LMG"},//	10
-	{"HMG",									"NewClip",						"HMGAmmo",					"Yes",	"NAIL",		"Nailgun"},//	7
+	{"PB_Minigun",							"NewClip",						"NoSecondary",				"No",	"MINI",		"Minigun"},//	8
+	{"PB_LMG",								"NewClip",						"LMGAmmo",					"Yes",	"UC349",	"UAC349 LMG"},//	10
+	{"PB_Nailgun",							"NewClip",						"NoSecondary",					"Yes",	"NAIL",		"Nailgun"},//	7
 	{"Excavator",							"HighExplosiveGrenadeRounds",	"HMGAmmo",					"Yes",	"DRILL",	"Excavator"}, 
-	// {"Grenade_Launcher",					"HighExplosiveGrenadeRounds",	"NoSecondary",				"No",	"GRENL",	"Grenade Launcher"},//	12
-	{"Super_Grenade_Launcher",				"SpecialGrenadeRounds",			"GrenadeRounds",			"Yes",	"SGL",		"Super G Launcher"},//	11
-	{"Rocket_Launcher",						"RocketAmmo",					"RocketRounds",				"Yes",	"RCKTL",	"Rocket Launcher"},//	13
-	{"Plasma_Gun",							"Cell",							"PlasmaAmmo",				"Yes",	"PLSMA",	"Plasma Rifle"},//	15
-	{"PulseCannon",							"Cell",							"PulseCannonAmmo",			"Yes",	"PULSE",	"Pulse Cannon"},
-	{"M2PlasmaRifle",						"Cell",							"M2PlasmaAmmo",				"Yes",	"PLSM2",	"M2 Plasma Rifle"},//	14
-	{"FreezerRifle",						"Cell",							"FreezerAmmo",				"Yes",	"FMISL",	"Freezer Rifle"},//	17
-	{"Rail_Gun",							"Cell",							"RailgunAmmo",				"Yes",	"RAIL",		"Rail Gun"},//	16
+	{"Grenade_Launcher",					"HighExplosiveGrenadeRounds",	"NoSecondary",				"No",	"GRENL",	"Grenade Launcher"},//	12
+	{"PB_SuperGL",							"SpecialGrenadeRounds",			"GrenadeRounds",			"Yes",	"SGL",		"Super G Launcher"},//	11
+	{"PB_RocketLauncher",					"RocketAmmo",					"RocketRounds",				"Yes",	"RCKTL",	"Rocket Launcher"},//	13
+	{"PB_M1Plasma",							"Cell",							"PlasmaAmmo",				"Yes",	"PLSMA",	"Plasma Rifle"},//	15
+	{"PB_PulseCannon",						"Cell",							"PulseCannonAmmo",			"Yes",	"PULSE",	"Pulse Cannon"},
+	{"PB_M2Plasma",							"Cell",							"M2PlasmaAmmo",				"Yes",	"PLSM2",	"M2 Plasma Rifle"},//	14
+	{"PB_Freezer",							"Cell",							"FreezerAmmo",				"Yes",	"FMISL",	"Freezer Rifle"},//	17
+	{"PB_Railgun",							"Cell",							"RailgunAmmo",				"Yes",	"RAIL",		"Rail Gun"},//	16
 	{"BHGEN",								"Cell",							"Cell",						"No",	"BHGEN",	"Black Hole Gen"},//	18
 	{"PlasmaBeam",							"Cell",							"NoSecondary",				"No",	"BM11K",	"BFG Beam 11K"},//	19
-	{"BIG_FUCKING_GUN_MKIV",				"Cell",							"NoSecondary",				"No",	"BFG9K",	"BFG9K MKIV"},//	20
-	{"HellishMissileLauncher",				"MiniHellRocketAmmo",			"MiniHellRocketAmmo",		"No",	"HELL",		"Revenant Launcher"},//	21
-	{"FlameCannon",							"Gas",							"NoSecondary",				"No",	"FLAME",	"Flame Cannon"},//	22
+	{"PB_BFG9000",							"Cell",							"NoSecondary",				"No",	"BFG9K",	"BFG9K MKIV"},//	20
+	// {"HellishMissileLauncher",				"MiniHellRocketAmmo",			"MiniHellRocketAmmo",		"No",	"HELL",		"Revenant Launcher"},//	21
+	{"PB_Flamethrower",						"Gas",							"NoSecondary",				"Yes",	"FLAME",	"Flame Cannon"},//	22
 	{"Hell_rifle",							"DemonPower",					"HellAmmo",					"Yes",	"HRIFL",	"Demon Tech Rifle"},//	23
 	// {"Quad_SSG",							"NewShell",						"NoSecondary",				"No",	"QUAD",		"Quad-Barrel"},//	25
 	{"SecretWeapon_MP40",					"NewClip",						"MP40Ammo",					"Yes",	"MP40",		"MP40"},//	24
