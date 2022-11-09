@@ -847,13 +847,15 @@ Function void GetEquippedWeaponAndAmmo (void)
 		}//End is_brutalv21
 		Else If(is_PB3)
 		{
-			 int UDVWeaponTotalPB3 = PB_StandWeap + UAC_EXP_WEAPONS;
-			  For(i=0; i < PB_NumOfWeap; i++)
-			  {
+			int UDVWeaponTotalPB3 = PB_StandWeap + UAC_EXP_WEAPONS;
+			For(i=0; i < PB_NumOfWeap; i++)
+			{
 				If(CheckWeapon(PB_weaponslist[i][0]))
 				{
 					GiveInventory("sae_known", 1);
+					// Setting Weapons Short Title
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[i][4];
+
 					If(CheckInventory("GrenadeTypeLVG") && CheckWeapon("Super_Grenade_Launcher") )
 					{
 						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 21][4];
@@ -930,20 +932,15 @@ Function void GetEquippedWeaponAndAmmo (void)
 					sae_SecAmmoCap[PlayerNumber()] = GetAmmoCapacity(PB_weaponslist[i][2]);
 					If ( sae_SecAmmoCap[PlayerNumber()] > 2 ) GiveInventory("UDV_SecAmmoCap", 1);
 					Else TakeInventory("UDV_SecAmmoCap", 1);
+
 					AmmoBarForHUD(PB_weaponslist[i][1], "sae_PAE", "sae_PrimaryAmmoVeryLow", "sae_PrimaryAmmoLow", "sae_PrimaryAmmoOk");
 					AmmoBarForHUD(PB_weaponslist[i][2], "sae_SAE", "sae_SecondaryAmmoVeryLow", "sae_SecondaryAmmoLow", "sae_SecondaryAmmoOk");
 
 					If((PB_weaponslist[i][3]) == "Yes") GiveInventory("sae_Secondary", 1);
 					Else TakeInventory("sae_Secondary", 1);
 
-					If( PB_weaponslist[i][1] == "NoPrimary" ) 
-					{
-						GiveInventory("sae_Melee", 1);
-					}
-					Else
-					{
-						TakeInventory("sae_Melee", 1);
-					}
+					If( PB_weaponslist[i][1] == "NoPrimary" ) GiveInventory("sae_Melee", 1);
+					Else 
 					Break;
 				}
 				Else
@@ -2253,9 +2250,6 @@ Script 24008 Enter
 {
 	if (GameType () != GAME_TITLE_MAP)
 	{
-		//GiveInventory("sae_Vanilla", 1);
-		//GiveInventory("udv_ModuleB", 1);
-
 		SETFONT("SMALLFONT");
 		While(TRUE)
 		{
@@ -2267,39 +2261,7 @@ Script 24008 Enter
 					BuildWeaponList();
 				}
 			}
-
-			/*
-			If( GetUserCVAR(PlayerNumber(), "saehud_togglelist"))
-			{
-				If ( !CheckInventory("sae_extcam") && !CheckInventory("sae_deathcam") )
-				{
-					BuildWeaponList();
-				}
-			}
-			*/
-			
 			Delay(1);
 		}
 	}
 }
-
-/*
-	Script 24009 Enter //Clientside
-	{
-		if (GameType () != GAME_TITLE_MAP)
-		{
-			SETFONT("SMALLFONT");
-			While(TRUE)
-			{
-					If( GetUserCVAR(PlayerNumber(), "saehud_togglelist"))
-					{
-						If ( !CheckInventory("sae_extcam") && !CheckInventory("sae_deathcam") )
-						{
-							BuildWeaponList();
-						}
-					}
-					Delay(1);
-			}
-		}
-	}
-*/

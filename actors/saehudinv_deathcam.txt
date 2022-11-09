@@ -1,12 +1,12 @@
-ACTOR sae_deathcam : Inventory 
+/* ACTOR sae_deathcam : Inventory 
 {
 inventory.maxamount 1
-}
+} */
 
-ACTOR sae_extcam : Inventory
+/* ACTOR sae_extcam : Inventory
 {
 inventory.maxamount 1
-}
+} */
 
 /*
 ACTOR DoomerUDV : Doomer Replaces Doomer

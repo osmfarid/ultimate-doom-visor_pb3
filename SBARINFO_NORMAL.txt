@@ -1,0 +1,1790 @@
+statusbar NORMAL, forcescaled
+
+//InInventory sae_deathcam || sae_extcam 
+
+InInventory sae_extcam 
+{
+	//ONLY DRAW RED TINT and NO HUD DURING FATALITIES or external cam views
+	//ONLY DRAW RED TINT and NO HUD DURING FATALITIES or external cam views
+	//DON'T DRAW HUD DURING FATALITIES or external cam views
+	InInventory udv_helmet, 1
+	{
+		IfCvarInt udv_redtint, 1
+		{
+				IfHealth not 21
+				{
+					IfHealth not 6
+					{
+						Alpha 0.75
+						DrawImage "RED01", -54, 0;
+					}
+					Else
+					{
+						Alpha 0.25
+						DrawImage "RED00", -54, 0;
+					}
+				}
+		}
+	}
+}
+// ELSE InInventory NOT sae_PA1N
+// {
+// 	InInventory Revenant_Rune || D4BaronHUD
+// 	{
+// 		drawnumber 4, digifont_large, red, Health, whennotzero, 94, 181;
+// 	}
+	
+// }
+ELSE
+{
+	Aspectratio "4:3"
+	{
+		// ARMOR
+		InInventory PowerInvisibility, 1
+		{
+			Alpha 0.1
+			DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			Alpha 0.75
+			{
+				InInventory sae_ArmorXTRM
+				{
+					DrawImage "ArmorBl", 44, 184;
+					Alpha 0.2
+					DrawBar "HealthBl", "HealthWW", Armor (200), horizontal, interpolate(8), 30, 184;
+					DrawBar "HealthWh", "HealthTR", Armor (400), horizontal, interpolate(8), 30, 184;
+					DrawNumber 3, digifont_large, WHITE, Armor, Alignment(right), whennotzero, 94, 188;
+				}
+				Else InInventory sae_ArmorBlue
+				{
+					DrawImage "ArmorBl", 44, 184;
+					DrawBar "HealthFu", "HealthEm", Armor (100), horizontal, interpolate(8), 55, 184;
+					DrawBar "HealthBl", "HealthBB", Armor (200), horizontal, interpolate(8), 30, 184;
+					DrawNumber 3, digifont_large, cyan, Armor, Alignment(right), whennotzero, 94, 188;
+				}
+				Else
+				{
+					DrawImage "ArmorGr", 44, 184;
+					DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+					drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+				}
+				DrawNumber 2, digifont_small, SaeHudGR,poweruptime blursphere, Alignment(right), 71, 195;
+				DrawString digifont_small, saehudgr, "Active Camo", 65, 195;
+			}
+		}
+		Else InInventory sae_ArmorXTRM//sae_ArmorXTRM
+		{
+			DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			DrawImage "EXTREM01", 30, 184;
+			DrawImage "ArmorBl", 44, 184;
+			Alpha 0.2
+			DrawBar "HealthBl", "HealthWW", Armor (200), horizontal, interpolate(8), 30, 184;
+			Alpha 0.75
+			DrawBar "HealthWh", "HealthTR", Armor (400), horizontal, interpolate(8), 30, 184;
+			Alpha 0.75
+			DrawNumber 3, digifont_large, WHITE, Armor, Alignment(right), whennotzero, 94, 188;
+		}		
+		Else InInventory sae_ArmorBlue//sae_ArmorBlue
+		{
+			DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			DrawImage "ArmorBl", 44, 184;
+			Alpha 0.2
+			DrawBar "HealthFu", "HealthEm", Armor (100), horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			DrawBar "HealthBl", "HealthBB", Armor (200), horizontal, interpolate(8), 30, 184;
+			Alpha 0.75
+			DrawNumber 3, digifont_large, cyan, Armor, Alignment(right), whennotzero, 94, 188;
+		}
+		Else InInventory sae_ArmorGreen//sae_ArmorGreen
+		{
+			DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			DrawImage "ArmorGr", 44, 184;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+		}
+		Else InInventory sae_Armor80d//sae_Armor80d
+		{
+			InInventory sae_ToggleDamage
+			{
+				DrawSwitchableImage udv_LQ, "ADMG4301", "LQAD4301", 0, 0;
+			}
+			Else
+			{
+				DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			}
+			DrawImage "ArmorGr", 44, 184;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+		}
+		Else InInventory sae_Armor60d//sae_Armor60d
+		{
+			InInventory sae_ToggleDamage
+			{
+				DrawSwitchableImage udv_LQ, "ADMG4302", "LQAD4302", 0, 0;
+			}
+			Else
+			{
+				DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			}
+			DrawImage "ArmorGr", 44, 184;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+		}
+		Else InInventory sae_ArmorYellow//sae_ArmorYellow
+		{
+			InInventory sae_ToggleDamage
+			{
+				DrawSwitchableImage udv_LQ, "ADMG4303", "LQAD4303", 0, 0;
+			}
+			Else
+			{
+				DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			}
+
+			DrawImage "ArmorGr", 44, 184;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+		}
+		Else InInventory sae_Armor40d//sae_Armor40d
+		{
+			InInventory sae_ToggleDamage
+			{
+				DrawSwitchableImage udv_LQ, "ADMG4304", "LQAD4304", 0, 0;
+			}
+			Else
+			{
+				DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			}
+			DrawImage "ArmorGr", 44, 184;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+		}
+		Else InInventory sae_ArmorRed//sae_ArmorRed
+		{
+			InInventory sae_ToggleDamage
+			{
+			DrawSwitchableImage udv_LQ, "ADMG4304", "LQAD4304", 0, 0;
+			}
+			Else
+			{
+			DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			}
+			DrawImage "ArmorGr", 44, 184;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+		}
+		Else InInventory sae_Armor20d//sae_Armor20d
+		{
+			InInventory sae_ToggleDamage
+			{
+			DrawSwitchableImage udv_LQ, "ADMG4305", "LQAD4305", 0, 0;
+			}
+			Else
+			{
+			DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			}
+			DrawImage "ArmorGr", 44, 184;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+		}
+		Else InInventory sae_Armor10d//sae_Armor10d
+		{
+			InInventory sae_ToggleDamage
+			{
+			DrawSwitchableImage udv_LQ, "ADMG4306", "LQAD4306", 0, 0;
+			}
+			Else
+			{
+			DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			}
+			DrawImage "ArmorGr", 44, 184;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 55, 184;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Armor, whennotzero, 94, 188;
+		}	
+		Else //sae_Armor0d
+		{
+			InInventory sae_ToggleDamage
+			{
+			DrawSwitchableImage udv_LQ, "ADMG4307", "LQAD4307", 0, 0;
+			}
+			Else
+			{
+			DrawSwitchableImage udv_LQ, "ADMG4300", "LQAD4300", 0, 0;
+			}
+		}
+
+		// Blood splatters on armor due to damage
+		IfCvarInt udv_splatter, 1//InInventory sae_ToggleDamage
+		{
+			InInventory not PowerInvisibility
+			{
+				Alpha 0.50
+				{
+					InInventory "UDV_NoDam" {}
+					Else InInventory "UDV_10Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL01", "LQHEAL01", 0, 0;
+					}
+					Else InInventory "UDV_20Dam" 
+					{
+						DrawSwitchableImage udv_LQ, "HEAL02", "LQHEAL02", 0, 0;
+					}
+					Else InInventory "UDV_30Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL03", "LQHEAL03", 0, 0;
+					}
+					Else InInventory "UDV_40Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL04", "LQHEAL04", 0, 0;
+					}
+					Else InInventory "UDV_50Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL05", "LQHEAL05", 0, 0;
+					}
+					Else InInventory "UDV_60Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL06", "LQHEAL06", 0, 0;
+					}
+					Else InInventory "UDV_70Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL07", "LQHEAL07", 0, 0;
+					}
+					Else InInventory "UDV_80Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL08", "LQHEAL08", 0, 0;
+					}
+					Else InInventory "UDV_90Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL09", "LQHEAL09", 0, 0;
+					}
+					Else InInventory "UDV_100Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL10", "LQHEAL10", 0, 0;
+					}
+					Else InInventory "UDV_110Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL11", "LQHEAL11", 0, 0;
+					}
+					Else InInventory "UDV_120Dam" 
+					{
+						DrawSwitchableImage udv_LQ, "HEAL12", "LQHEAL12", 0, 0;
+					}
+					Else InInventory "UDV_130Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL13", "LQHEAL13", 0, 0;
+					}
+					Else InInventory "UDV_140Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL14", "LQHEAL14", 0, 0;
+					}
+					Else InInventory "UDV_150Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL15", "LQHEAL15", 0, 0;
+					}
+					Else InInventory "UDV_160Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL16", "LQHEAL16", 0, 0;
+					}
+					Else InInventory "UDV_170Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL17", "LQHEAL17", 0, 0;
+					}
+					Else InInventory "UDV_180Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL18", "LQHEAL18", -54, 0;
+					}
+					Else InInventory "UDV_190Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL19", "LQHEAL19", -54, 0;
+					}
+					Else InInventory "UDV_200Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL20", "LQHEAL20", -54, 0;
+					}
+					Else InInventory "UDV_MAXDam"
+					{
+						DrawSwitchableImage udv_LQ, "HEALMX", "LQHEALMX", -54, 0;
+					}
+					IfHealth not 1 //show full blood if dead
+					{
+						DrawSwitchableImage udv_LQ, "HEALMX", "LQHEALMX", -54, 0;
+					}
+				}
+			}
+		}//end blood splatter
+
+		//Mugshot
+		InInventory sae_ToggleMug
+		{
+			InInventory sae_DynamicMug
+			{
+				InInventory BasicArmor, 21
+				{
+					Alpha 0.35
+					DrawImage "mugshotb", 0, 114;
+					Alpha 0.35
+					drawmugshot 5, animatedgodmode, 7, 125;
+				}
+				Else InInventory sae_Armor20d
+				{
+					Alpha 0.5
+					DrawImage "MUGBCK01", 0, 114;
+					Alpha 0.35
+					drawmugshot 5, animatedgodmode, 7, 125;
+				}
+				Else InInventory sae_Armor10d
+				{
+					Alpha 0.5
+					DrawImage "STATIC01", 0, 114;
+				}
+			}
+			Else //Persistent Mugshot
+			{
+				Alpha 0.35
+				DrawImage "mugshotb", 0, 114;
+				Alpha 0.35
+				drawmugshot 5, animatedgodmode, 7, 125;
+			}
+		}//end sae_ToggleMug
+
+		// HEALTH
+		InInventory sae_HPWhite
+		{
+			DrawImage "EXTREM01", 30, 174;
+			DrawImage "HEALFU01", 43, 174;
+			Alpha 0.2
+			DrawBar "HealthBl", "HealthWW", Health (200), horizontal, interpolate(8), 30, 174;
+			Alpha 0.75
+			DrawBar "HealthWh", "HealthBB", Health (400), horizontal, interpolate(8), 30, 174;
+			Alpha 0.75
+			DrawNumber 3, digifont_large, WHITE, Health, Alignment(right), whennotzero, 94, 181;
+		}	
+		InInventory sae_HPBlue
+		{
+			DrawImage "HEALFU01", 43, 174;
+			Alpha 0.2
+			DrawBar "HealthFu", "HealthEm", Health (100), horizontal, interpolate(8), 55, 174;
+			Alpha 0.75
+			DrawBar "HealthBl", "HealthBB", Health (200), horizontal, interpolate(8), 30, 174;
+			Alpha 0.75
+			DrawNumber 3, digifont_large, cyan, Health, Alignment(right), whennotzero, 94, 181;
+		}
+		InInventory sae_HPGreen
+		{
+			Drawimage "HEALFU01", 43, 174;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Health, horizontal, interpolate(8), 55, 174;
+			Alpha 0.75
+			drawnumber 3, digifont_large, SaeHUDGr, Health, whennotzero, 94, 181;
+		}
+		InInventory sae_HPYellow
+		{
+			DrawImage "HEALWR01", 43, 174;
+			Alpha 0.35
+			Drawimage "OrHL4301", 39, 168;
+			Alpha 0.75
+			DrawBar "HealthYe", "OraGlo", Health, horizontal, interpolate(8), 55, 174;
+			Alpha 0.75
+			drawnumber 3, digifont_large, orange, Health, whennotzero, 94, 181;
+		}
+		InInventory sae_HPRed
+		{
+			DrawImage "HEALCR01", 43, 174;
+			Alpha 0.35
+			Drawimage "RdHL4301", 39, 168;
+			Alpha 0.75
+			DrawBar "HealthRe", "RedGlo", Health, horizontal, interpolate(8), 55, 174;
+			Alpha 0.75
+			drawnumber 3, digifont_large, red, Health, whennotzero, 94, 181;
+		}
+		InInventory sae_HPDead
+		{
+			DrawImage "HEALFL01", 43, 174;
+			Alpha 0.35
+			DrawImage "RdHL4301", 39, 168;
+			Alpha 0.75
+			DrawBar "HealthRe", "RedGlo", Health, horizontal, interpolate(8), 55, 174;
+		}
+		
+		// AMMO BAR
+		// InInventory Jpoints, 1//Johnny Points
+		// {
+		// 	Alpha 0.35
+		// 	{
+		// 		DrawBar "jpntf", "jpnte", Jpoints, horizontal, 230, 23;
+		// 		DrawString digifont_small, saehudgr, "JP", 234, 27;
+		// 		Drawnumber 4, digifont_small, SaeHUDGr, Jpoints, alignment(right), fillzeros, 244, 27;
+		// 	}
+		// }
+		// InInventory UsedStamina,1 //BDv21 Stamina
+		// {
+		// 	Alpha 0.35
+		// 	{
+		// 		DrawBar "jpntf", "jpnte", UsedStamina, horizontal, 230, 23;
+		// 		DrawString digifont_small, saehudgr, "STAM", 234, 27;
+		// 		Drawnumber 3, digifont_small, SaeHUDGr, UsedStamina, alignment(right), fillzeros, 244, 27;
+		// 	}
+		// }
+		// InInventory Stamina,1 //BDv21 Stamina
+		// {
+		// 	Alpha 0.35
+		// 	{
+		// 		DrawBar "jpntf", "jpnte", ammo("Stamina"), horizontal, 230, 23;
+		// 		DrawString digifont_small, saehudgr, "STAM", 234, 27;
+		// 		Drawnumber 3, digifont_small, SaeHUDGr, ammo("Stamina"), alignment(right), fillzeros, 244, 27;
+		// 	}
+		// }
+		
+		//Accessory Battery Display
+		IfCVarInt udv_batterydisplay, 1
+		{
+			//InInventory UDV_ACCBattery, 1
+			//{
+				Alpha 0.35
+				{
+					DrawBar "jpntf", "jpnte", UDV_ACCBattery, horizontal, 230, 18;
+					DrawString digifont_small, saehudgr, "ACC.", 236, 22;
+					DrawNumber 3, digifont_small, saehudgr, UDV_ACCBattery, 244, 22;
+				}
+			//}
+		}
+		Alpha 0.75
+		{
+			InInventory sae_known
+			{
+				usesammo // If weapon is known, draw ammo bar in color
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, globalarray 42, 268, 173;
+					InInventory sae_PrimaryAmmoGreen
+					{
+						drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo1, Alignment(left), fillzeros, 246, 181;
+					}
+					InInventory sae_PrimaryAmmoYellow
+					{
+						drawnumber 3, DIGIFONT_LARGE, orange, Ammo1, Alignment(left), fillzeros, 246, 181;
+					}
+					InInventory sae_PrimaryAmmoRed
+					{
+						Alpha 0.35
+						drawimage "RedAR4301", 216, 168;
+						drawnumber 3, DIGIFONT_LARGE, red, Ammo1, Alignment(left), fillzeros, 246, 181;
+					}
+					InInventory sae_Secondary
+					{
+						drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 246, 181;
+						InInventory sae_SecondaryAmmoGreen
+						{
+							drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo2, Alignment(right), fillzeros, 241, 181;
+						}
+						InInventory sae_SecondaryAmmoYellow
+						{
+							drawnumber 3, DIGIFONT_LARGE, orange, Ammo2, Alignment(right), fillzeros, 241, 181;
+						}
+						InInventory sae_SecondaryAmmoRed
+						{
+							drawnumber 3, DIGIFONT_LARGE, red, Ammo2, Alignment(right), fillzeros, 241, 181;
+						}
+					}
+				}
+				ELSE //MELEE WEAPONS DISPLAY
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, globalarray 42, 268, 173;
+				}
+			}
+
+			Else // If weapon is unknown 
+			{
+				Usesammo
+				{
+					drawstring DIGIFONT_small, SaeHUDGr, globalarray 42, 268, 177;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo1, Alignment(left), fillzeros, 246, 181;
+					usessecondaryammo
+						{
+							drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 246, 181;
+							drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo2, Alignment(right), fillzeros, 241, 181;
+						}
+				}
+				/*
+				ELSE //melee
+				{
+					drawstring DIGIFONT_LARGE, WHITE, "AMMO", 267, 177;
+				}
+				*/
+			}
+			IsSelected Rifle
+			{
+				InInventory DualWieldingDMRs
+				{
+					// drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 263, 181;
+					// drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, Alignment(right), fillzeros, 260, 181;
+					
+					drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, 287, 175;
+					drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, alignment(left), 289, 175;
+				}
+			}
+			IsSelected PB_SMG
+			{
+				InInventory DualWieldingSMGs
+				{
+					drawnumber 3, digifont_small, saehudgr, ammo SMGAmmo, 287, 175;
+					drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+					drawnumber 3, digifont_small, saehudgr, ammo LeftSMGAmmo, alignment(left), 289, 175;
+				}
+			}
+			IsSelected PB_Revolver
+			{
+				InInventory DualWieldingRevolver
+				{
+					drawnumber 3, digifont_small, saehudgr, ammo LeftRevolverAmmo, 287, 175;
+					drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+					drawnumber 3, digifont_small, saehudgr, ammo RevolverAmmo, alignment(left), 289, 175;
+				}
+			}
+			IsSelected PB_Pistol
+			{
+				InInventory DualWieldingPistols
+				{
+					drawnumber 3, digifont_small, saehudgr, ammo SecondaryPistolAmmo, 287, 175;
+					drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+					drawnumber 3, digifont_small, saehudgr, ammo PrimaryPistolAmmo, alignment(left), 289, 175;
+				}
+			}
+			/* IsSelected DualCarbines
+			{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftCarbineAmmo, 287, 175;
+				drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+				drawnumber 3, digifont_small, saehudgr, ammo XRifleAmmo, alignment(left), 289, 175;
+			} */
+			/* IsSelected DualM2PlasmaRifles
+			{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftM2PlasmagunAmmo, 287, 175;
+				drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+				drawnumber 3, digifont_small, saehudgr, ammo RightM2PlasmagunAmmo, alignment(left), 289, 175;
+			} */
+			/* IsSelected DualAutoShotguns
+			{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftASGAmmo, 287, 175;
+				drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+				drawnumber 3, digifont_small, saehudgr, ammo AutoShotgunAmmo, alignment(left), 289, 175;
+			} */
+			/* IsSelected DualSSG
+			{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftSSGAmmo, 287, 175;
+				drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+				drawnumber 3, digifont_small, saehudgr, ammo RightSSGAmmo, alignment(left), 289, 175;
+			} */
+			/* IsSelected DualPlasmaRifles
+			{
+				InInventory sae_PA1N
+				{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftPlasmaGunAmmo, 287, 175;
+				drawstring digifont_small, SaeHUDGr, "/", 289, 175;
+				drawnumber 3, digifont_small, saehudgr, ammo RightPlasmaGunAmmo, alignment(left), 289, 175;
+				}
+			} */
+		}
+
+		// AIR SUPPLY
+		InInventory sae_Underwater
+		{
+			Alpha 0.35
+			{
+				Drawbar "AirSL43", "AirSE43", airtime, horizontal, reverse, 144, 195;
+				Drawbar "AirSR43", "AirSE43", airtime, horizontal, 159, 195;
+			}
+		}
+		
+		// LEVEL STATS AND TOGGLE
+		//InInventory sae_ToggleStats
+		IfCvarInt udv_togglekills, 1
+		{
+			Alpha 0.5
+			{
+				DRAWIMAGE "KILLS", 95, 15;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, KILLS, 119, 19;
+				IfCvarInt udv_totalstats, 1
+				{
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 121, 20;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, MONSTERS, ALIGNMENT(LEFT), 121, 20;
+				}
+			}
+		}
+		IfCvarInt udv_togglesecrets, 1
+		{
+			Alpha 0.5
+			{
+				DRAWIMAGE "SCRTS", 95, 15;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, SECRETS, 119, 24;
+				IfCvarInt udv_totalstats, 1
+				{
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 121, 25;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, TOTALSECRETS, ALIGNMENT(LEFT), 121, 25;
+				}
+			}
+		}
+		IfCvarInt udv_toggleitems, 1
+		{
+			Alpha 0.5
+			{
+				DrawImage "ITEMS", 95, 15;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, ITEMS, 119, 29;
+				IfCvarInt udv_totalstats, 1
+				{
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 121, 30;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, TOTALITEMS, ALIGNMENT(LEFT), 121, 30;
+				}
+			}
+		}
+		InInventory UDV_playername
+		{
+			Alpha 0.5
+			DrawString digifont_small, SaeHUDGr, playername, 160, 12, 0, alignment(center);
+		}
+		InInventory UDV_LevelTime
+		{
+			Alpha 0.5
+			{
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "ENGAGEMENT TIME", 160, 15, 0, alignment(center);
+				DrawString DIGIFONT_SMALL, SaeHUDGR, time, 153, 18, 0, alignment(center);
+			}
+		}
+		// KEYBAR
+		Alpha 0.5
+		{
+			drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 260, 189;
+			drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 254, 189;
+			drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 248, 189;
+		}
+		// Light Amp Time
+		InInventory PowerLightAmp
+		{
+			Alpha 0.75
+			DrawBar "BattFus", "BattEMs", POWERUPTIME INFRARED, vertical, 270, 175;
+		}
+		// Radiation Suit Time
+		InInventory PowerIronFeet
+		{
+			Alpha 0.75
+			DrawBar "biohaz", "biohazem", poweruptime radsuit, vertical, 266, 185;
+		}
+		// GRENADE count placeholder, not used in Brutal Doom v19
+		Alpha 0.75
+		{
+			/* InInventory J_HandGrenadeAmmo, 1
+			{
+				drawimage "jgrenade", 243, 174;
+				drawnumber 2, digifont_small, SaeHUDGr, ammo J_HandGrenadeAmmo, 241, 176;
+				InInventory HandGrenadeAmmo, 1
+				{
+					drawnumber 2, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 241, 179;
+				}
+				InInventory GrenadeAmmo, 1
+				{
+					drawnumber 2, digifont_small, SaeHUDGr, ammo GrenadeAmmo, 241, 179;
+				}
+			} */
+			/* Else InInventory HandGrenadeAmmo, 1
+			{
+				drawimage "grenade", 243, 174;
+				drawnumber 2, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 241, 179;
+			} */
+			/* Else InInventory GrenadeAmmo, 1
+			{
+				drawimage "grenade", 243, 174;
+				drawnumber 2, digifont_small, SaeHUDGr, ammo GrenadeAmmo, 241, 179;
+			} */
+		}
+		// Light up UAC logo when extra strength active
+		InInventory PowerStrength
+		{
+			DrawImage "BERS4301", 27, 190;
+		}
+		InInventory sae_recording
+		{
+			DRAWIMAGE "REC4301", 33, 187;
+		}
+
+		// BEGIN Multi-Weapon Display
+		Alpha 0.75
+		{
+			IsSelected Rifle
+			{
+				InInventory DualWieldingDMRs, 1
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+				}
+			}
+			/* IsSelected VanillaRifle
+			{
+				InInventory DualVanillaRifleChecker, 1
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+				}
+			} */
+			IsSelected PB_Pistol
+			{
+				InInventory DualWieldingPistols, 1 
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+				}
+
+				InInventory SilencerEquipped, 1 
+				{
+					drawstring digifont_small, SaeHUDGR, "SLNT", 267, 182;
+				}
+
+				InInventory ToggledPistolBurstFire, 1 
+				{
+					drawstring digifont_small, SaeHUDGR, "BRST", 267, 184;
+				}
+			}
+			IsSelected PB_SSG
+			{
+				InInventory DualWieldingSSG, 1
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+				}
+			}
+			/* IsSelected Plasma_Gun
+			{
+				InInventory DualPlasmaChecker, 3
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+				}
+			} */
+			/* IsSelected M2PlasmaRifle
+			{
+				InInventory DualM2PlasmaChecker, 3
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+				}
+			} */
+			/* IsSelected Revolver
+			{
+				InInventory DualMagnumChecker, 3
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+				}
+			} */
+			/* IsSelected AutoShotgun
+			{
+				InInventory DualASGChecker, 3
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+				}
+			} */
+			/* IsSelected Carbine
+			{
+				InInventory udv_restorecarbines, 1
+				{
+					InInventory DualCarbineChecker, 3
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 267, 180;
+					}
+				}
+			} */
+			/* IsSelected Mini_Gun
+			{
+				InInventory AdvancedBackpackCounter, 1 && MinigunCounter, 5
+				{
+					InInventory NOT EquipDeathDealer, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "TRI", 267, 180;
+					}
+				}
+			} */
+		}
+
+		InInventory sae_ToggleAmmo
+		{
+			Alpha 0.35
+			{
+				InInventory PistolBullets, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "P.Bullets", 290, 122;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo PistolBullets, 298, 122;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 122;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity PistolBullets, alignment(left), 300, 122;
+				}
+				InInventory NewClip, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Bullets", 290, 125;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo NewClip, 298, 125;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 125;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity NewClip, alignment(left), 300, 125;
+				}
+				InInventory NewShell, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Shells", 290, 128;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo NewShell, 298, 128;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 128;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity NewShell, alignment(left), 300, 128;
+				}
+				InInventory RocketAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Rockets", 290, 131;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo RocketAmmo, 298, 131;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 131;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity RocketAmmo, alignment(left), 300, 131;
+				}
+				InInventory SpecialGrenadeRounds, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Spc. Grenade", 290, 134;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo SpecialGrenadeRounds, 298, 134;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 134;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity SpecialGrenadeRounds, alignment(left), 300, 134;
+				}
+				InInventory HighExplosiveGrenadeRounds, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "High Expl.", 290, 137;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo HighExplosiveGrenadeRounds, 298, 137;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 137;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity HighExplosiveGrenadeRounds, alignment(left), 300, 137;
+				}
+				InInventory Cell, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Cells", 290, 140;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo Cell, 298, 140;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 140;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Cell, alignment(left), 300, 140;
+				}
+				InInventory MiniHellRocketAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Missiles", 290, 143;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo MiniHellRocketAmmo, 298, 143;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 143;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MiniHellRocketAmmo, alignment(left), 300, 143;
+				}
+				InInventory Gas, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Gas", 290, 146;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo Gas, 298, 146;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 146;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Gas, alignment(left), 300, 146;
+				}
+				InInventory DemonPower, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Energy", 290, 149;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo DemonPower, 298, 149;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 149;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity DemonPower, alignment(left), 300, 149;
+				}
+				InInventory MineAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Mines", 290, 152;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo MineAmmo, 298, 152;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 152;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MineAmmo, alignment(left), 300, 152;
+				}
+				/* InInventory JAWBONEAMMO, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "JAWBONES", 290, 155;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo JAWBONEAMMO, 298, 155;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 155;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity JAWBONEAMMO, alignment(left), 300, 155;
+				} */
+				/* InInventory PIPEBOMBAMMO, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "PIPEBOMBS", 290, 158;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo PIPEBOMBAMMO, 298, 158;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 158;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity PIPEBOMBAMMO, alignment(left), 300, 158;
+				} */
+				/* InInventory SATCHELCHARGEAMMO, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "SATCHEL CHARGES", 290, 161;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo SATCHELCHARGEAMMO, 298, 161;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 161;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity SATCHELCHARGEAMMO, alignment(left), 300, 161;
+				} */
+			}
+		}
+		//red tint
+		IfCvarInt udv_redtint, 1
+		{
+			IfHealth not 21
+			{
+				IfHealth not 6
+				{
+					Alpha 0.75
+					DrawImage "RED01", -54, 0;
+				}
+				Else
+				{
+					Alpha 0.25
+					DrawImage "RED00", -54, 0;
+				}
+			}
+		}
+	}
+	ELSE
+	{
+		// ARMOR
+		InInventory PowerInvisibility, 1
+		{
+			Alpha 0.1
+			DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			Alpha 0.75
+			{
+			InInventory sae_ArmorXTRM
+			{
+				DrawImage "ArmorBl", 10, 183;
+				Alpha 0.2
+				DrawBar "HealthBl", "HealthWW", Armor (200), horizontal, interpolate(8), -2, 183;
+				DrawBar "HealthWh", "HealthTR", Armor (400), horizontal, interpolate(8), -2, 183;
+				DrawNumber 3, DIGIFONT_LARGE, WHITE, Armor, Alignment(right), whennotzero, 65, 185;
+			}
+			Else InInventory sae_ArmorBlue
+			{
+				DrawImage "ArmorBl", 10, 183;
+				DrawBar "HealthFu", "HealthEm", Armor (100), horizontal, interpolate(8), 23, 183;
+				DrawBar "HealthBl", "HealthBB", Armor (200), horizontal, interpolate(8), -2, 183;
+				DrawNumber 3, DIGIFONT_LARGE, cyan, Armor, Alignment(right), whennotzero, 65, 185;
+			}
+			Else
+			{
+				DrawImage "ArmorGr", 10, 183;
+				DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+				drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+			}
+			DrawNumber 2, digifont_small, SaeHudGR,poweruptime blursphere, Alignment(right), 67, 192;
+			DrawString digifont_small, saehudgr, "Active Camo", 61, 192;
+			}
+		}
+		Else InInventory sae_ArmorXTRM//sae_ArmorXTRM
+		{
+			DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			DrawImage "EXTREM01", -2, 183;
+			DrawImage "ArmorBl", 10, 183;
+			Alpha 0.2
+			DrawBar "HealthBl", "HealthWW", Armor (200), horizontal, interpolate(8), -2, 183;
+			Alpha 0.75
+			DrawBar "HealthWh", "HealthTR", Armor (400), horizontal, interpolate(8), -2, 183;
+			Alpha 0.75
+			DrawNumber 3, DIGIFONT_LARGE, WHITE, Armor, Alignment(right), whennotzero, 65, 185;
+		}		
+		Else InInventory sae_ArmorBlue//sae_ArmorBlue
+		{
+			DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+				DrawImage "ArmorBl", 10, 183;
+				Alpha 0.2
+				DrawBar "HealthFu", "HealthEm", Armor (100), horizontal, interpolate(8), 23, 183;
+				Alpha 0.75
+				DrawBar "HealthBl", "HealthBB", Armor (200), horizontal, interpolate(8), -2, 183;
+				Alpha 0.75
+				DrawNumber 3, DIGIFONT_LARGE, cyan, Armor, Alignment(right), whennotzero, 65, 185;
+		}
+		Else InInventory sae_ArmorGreen//sae_ArmorGreen
+		{
+			DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			DrawImage "ArmorGr", 10, 183;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+		}
+		Else InInventory sae_Armor80d//sae_Armor80d
+		{
+			InInventory sae_ToggleDamage
+			{
+			DrawSwitchableImage udv_LQ, "A_DMG01", "LQADMG01", -54, 0;
+			}
+			Else
+			{
+			DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			}
+			DrawImage "ArmorGr", 10, 183;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+		}
+		Else InInventory sae_Armor60d//sae_Armor60d
+		{
+			InInventory sae_ToggleDamage
+			{
+				DrawSwitchableImage udv_LQ, "A_DMG02", "LQADMG02", -54, 0;
+			}
+			Else
+			{
+				DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			}
+			DrawImage "ArmorGr", 10, 183;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+		}
+		Else InInventory sae_ArmorYellow//sae_ArmorYellow
+		{
+			InInventory sae_ToggleDamage
+			{
+			DrawSwitchableImage udv_LQ, "A_DMG03", "LQADMG03", -54, 0;
+			}
+			Else
+			{
+			DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			}
+			DrawImage "ArmorGr", 10, 183;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+		}
+		Else InInventory sae_Armor40d//sae_Armor40d
+		{
+			InInventory sae_ToggleDamage
+			{
+			DrawSwitchableImage udv_LQ, "A_DMG04", "LQADMG04", -54, 0;
+			}
+			Else
+			{
+			DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			}
+			DrawImage "ArmorGr", 10, 183;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+		}
+		Else InInventory sae_ArmorRed//sae_ArmorRed
+		{
+			InInventory sae_ToggleDamage
+			{
+			DrawSwitchableImage udv_LQ, "A_DMG04", "LQADMG04", -54, 0;
+			}
+			Else
+			{
+			DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			}
+			DrawImage "ArmorGr", 10, 183;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+		}
+		Else InInventory sae_Armor20d//sae_Armor20d
+		{
+			InInventory sae_ToggleDamage
+			{
+				DrawSwitchableImage udv_LQ, "A_DMG05", "LQADMG05", -54, 0;
+			}
+			Else
+			{
+				DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			}
+			DrawImage "ArmorGr", 10, 183;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+		}
+		Else InInventory sae_Armor10d//sae_Armor10d
+		{
+			InInventory sae_ToggleDamage
+			{
+				DrawSwitchableImage udv_LQ, "A_DMG06", "LQADMG06", -54, 0;
+			}
+			Else
+			{
+				DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			}
+			DrawImage "ArmorGr", 10, 183;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Armor, horizontal, interpolate(8), 23, 183;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Armor, whennotzero, 65, 185;
+		}	
+		Else //InInventory sae_Armor0d
+		{
+			InInventory sae_ToggleDamage
+			{
+				DrawSwitchableImage udv_LQ, "A_DMG07", "LQADMG07", -54, 0;
+			}
+			Else
+			{
+				DrawSwitchableImage udv_LQ, "A_DMG00", "LQADMG00", -54, 0;
+			}
+		}
+
+		// Blood splatters on armor due to damage
+		IfCvarInt udv_splatter, 1//InInventory sae_ToggleDamage
+		{
+			InInventory not PowerInvisibility
+			{
+				Alpha 0.50
+				{
+					InInventory "UDV_NoDam" {}
+					Else InInventory "UDV_10Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL01", "LQHEAL01", -54, 0;
+					}
+					Else InInventory "UDV_20Dam" 
+					{
+						DrawSwitchableImage udv_LQ, "HEAL02", "LQHEAL02", -54, 0;
+					}
+					Else InInventory "UDV_30Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL03", "LQHEAL03", -54, 0;
+					}
+					Else InInventory "UDV_40Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL04", "LQHEAL04", -54, 0;
+					}
+					Else InInventory "UDV_50Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL05", "LQHEAL05", -54, 0;
+					}
+					Else InInventory "UDV_60Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL06", "LQHEAL06", -54, 0;
+					}
+					Else InInventory "UDV_70Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL07", "LQHEAL07", -54, 0;
+					}
+					Else InInventory "UDV_80Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL08", "LQHEAL08", -54, 0;
+					}
+					Else InInventory "UDV_90Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL09", "LQHEAL09", -54, 0;
+					}
+					Else InInventory "UDV_100Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL10", "LQHEAL10", -54, 0;
+					}
+					Else InInventory "UDV_110Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL11", "LQHEAL11", -54, 0;
+					}
+					Else InInventory "UDV_120Dam" 
+					{
+						DrawSwitchableImage udv_LQ, "HEAL12", "LQHEAL12", -54, 0;
+					}
+					Else InInventory "UDV_130Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL13", "LQHEAL13", -54, 0;
+					}
+					Else InInventory "UDV_140Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL14", "LQHEAL14", -54, 0;
+					}
+					Else InInventory "UDV_150Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL15", "LQHEAL15", -54, 0;
+					}
+					Else InInventory "UDV_160Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL16", "LQHEAL16", -54, 0;
+					}
+					Else InInventory "UDV_170Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL17", "LQHEAL17", -54, 0;
+					}
+					Else InInventory "UDV_180Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL18", "LQHEAL18", -54, 0;
+					}
+					Else InInventory "UDV_190Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL19", "LQHEAL19", -54, 0;
+					}
+					Else InInventory "UDV_200Dam"
+					{
+						DrawSwitchableImage udv_LQ, "HEAL20", "LQHEAL20", -54, 0;
+					}
+					Else InInventory "UDV_MAXDam"
+					{
+						DrawSwitchableImage udv_LQ, "HEALMX", "LQHEALMX", -54, 0;
+					}
+					IfHealth not 1 //show full blood if dead
+					{
+						DrawSwitchableImage udv_LQ, "HEALMX", "LQHEALMX", -54, 0;
+					}
+				}
+			}
+		}//end blood splatter
+
+		// MUGSHOT
+		InInventory sae_ToggleMug
+		{
+			InInventory sae_DynamicMug
+			{
+				InInventory BasicArmor, 21
+				{
+					Alpha 0.35
+					DrawImage "mugshotb", -40, 114;
+					Alpha 0.35
+					drawmugshot 5, animatedgodmode, -33, 125;
+				}
+				Else InInventory sae_Armor20d
+				{
+					Alpha 0.5
+					DrawImage "MUGBCK01", -40, 114;
+					Alpha 0.35
+					drawmugshot 5, animatedgodmode, -33, 125;
+				}
+				Else InInventory sae_Armor10d
+				{
+					Alpha 0.5
+					DrawImage "STATIC01", -40, 114;
+				}
+			}
+			Else //Persistent Mugshot
+			{
+				Alpha 0.35
+				DrawImage "mugshotb", -40, 114;
+				Alpha 0.35
+				drawmugshot 5, animatedgodmode, -33, 125;
+			}
+		}
+		
+		// HEALTH
+		InInventory sae_HPWhite
+		{
+			DrawImage "EXTREM01", -2, 173;
+			DrawImage "HEALFU01", 10, 173;
+			Alpha 0.2
+			DrawBar "HealthBl", "HealthWW", Health (200), horizontal, interpolate(8), -2, 173;
+			Alpha 0.75
+			DrawBar "HealthWh", "HealthBB", Health (400), horizontal, interpolate(8), -2, 173;
+			Alpha 0.75
+			DrawNumber 3, DIGIFONT_LARGE, WHITE, Health, Alignment(right), whennotzero, 65, 178;
+		}	
+		InInventory sae_HPBlue
+		{
+			DrawImage "HEALFU01", 10, 173;
+			Alpha 0.2
+			DrawBar "HealthFu", "HealthEm", Health (100), horizontal, interpolate(8), 23, 173;
+			Alpha 0.75
+			DrawBar "HealthBl", "HealthBB", Health (200), horizontal, interpolate(8), -2, 173;
+			Alpha 0.75
+			DrawNumber 3, DIGIFONT_LARGE, cyan, Health, Alignment(right), whennotzero, 65, 178;
+		}
+		InInventory sae_HPGreen
+		{
+			Drawimage "HEALFU01", 10, 173;
+			Alpha 0.75
+			DrawBar "HealthFu", "HealthEm", Health, horizontal, interpolate(8), 23, 173;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Health, whennotzero, 65, 178;
+		}
+		InInventory sae_HPYellow
+		{
+			DrawImage "HEALWR01", 10, 173;
+			Alpha 0.35
+			Drawimage "OraHeL01", -2, 168;
+			Alpha 0.75
+			DrawBar "HealthYe", "OraGlo", Health, horizontal, interpolate(8), 23, 173;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, orange, Health, whennotzero, 65, 178;
+		}
+		InInventory sae_HPRed
+		{
+			DrawImage "HEALCR01", 10, 173;
+			Alpha 0.35
+			Drawimage "RedHeL01", -2, 168;
+			Alpha 0.75
+			DrawBar "HealthRe", "RedGlo", Health, horizontal, interpolate(8), 23, 173;
+			Alpha 0.75
+			drawnumber 3, DIGIFONT_LARGE, red, Health, whennotzero, 65, 178;
+		}
+		InInventory sae_HPDead
+		{
+			DrawImage "HEALFL01", 10, 173;
+			Alpha 0.35
+			DrawImage "RedHeL01", -2, 168;
+			Alpha 0.75
+			DrawBar "HealthRe", "RedGlo", Health, horizontal, interpolate(8), 23, 173;
+		}
+
+		// AMMO DISPLAY
+		/* InInventory Jpoints, 1
+		{
+			Alpha 0.35
+			{
+				DrawBar "jpntf", "jpnte", Jpoints, horizontal, 250, 23;
+				DrawString digifont_small, saehudgr, "JP", 254, 27;
+				Drawnumber 4, digifont_small, SaeHUDGr, Jpoints, alignment(right), fillzeros, 264, 27;
+			}
+		} */
+		/* InInventory UsedStamina,1
+		{
+			Alpha 0.35
+			{
+				DrawBar "jpntf", "jpnte", UsedStamina, horizontal, 250, 23;
+				DrawString digifont_small, saehudgr, "STAM", 254, 27;
+				Drawnumber 3, digifont_small, SaeHUDGr, UsedStamina, alignment(right), fillzeros, 264, 27;
+			}
+		} */
+		/* InInventory Stamina,1
+		{
+			Alpha 0.35
+			{
+				DrawBar "jpntf", "jpnte", ammo("Stamina"), horizontal, 250, 23;
+				DrawString digifont_small, saehudgr, "STAM", 254, 27;
+				Drawnumber 3, digifont_small, SaeHUDGr, ammo("Stamina"), alignment(right), fillzeros, 264, 27;
+			}
+		} */
+		//Accessory Battery Display
+		IfCVarInt udv_batterydisplay, 1
+		{
+			//InInventory UDV_ACCBattery, 1
+			//{
+				Alpha 0.35
+				{
+					DrawBar "jpntf", "jpnte", UDV_ACCBattery, horizontal, 250, 18;
+					DrawString digifont_small, saehudgr, "ACC.", 256, 22;
+					DrawNumber 3, digifont_small, saehudgr, UDV_ACCBattery, 264, 22;
+				}
+			//}
+		}
+
+		// WEAPON AMMO DISPLAY
+		Alpha 0.75
+		{
+			InInventory sae_known
+			{
+				usesammo // If weapon is known, draw ammo bar in color
+				{
+						drawstring DIGIFONT_LARGE, SaeHUDGr, globalarray 42, 304, 173;
+						InInventory sae_PrimaryAmmoGreen
+					{
+						drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo1, Alignment(left), fillzeros, 280, 181;
+					}
+					InInventory sae_PrimaryAmmoYellow
+					{
+						drawnumber 3, DIGIFONT_LARGE, orange, Ammo1, Alignment(left), fillzeros, 280, 181;
+					}
+					InInventory sae_PrimaryAmmoRed
+					{
+						Alpha 0.35
+						drawimage "RedAmR01", 236, 168;
+						drawnumber 3, DIGIFONT_LARGE, red, Ammo1, Alignment(left), fillzeros, 280, 181;
+					}
+					InInventory sae_Secondary
+					{
+						drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 280, 181;
+						InInventory sae_SecondaryAmmoGreen
+						{
+							drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo2, Alignment(right), fillzeros, 275, 181;
+						}
+						InInventory sae_SecondaryAmmoYellow
+						{
+							drawnumber 3, DIGIFONT_LARGE, orange, Ammo2, Alignment(right), fillzeros, 275, 181;
+						}
+						InInventory sae_SecondaryAmmoRed
+						{
+							drawnumber 3, DIGIFONT_LARGE, red, Ammo2, Alignment(right), fillzeros, 275, 181;
+						}
+					}
+				}
+				ELSE //MELEE WEAPONS DISPLAY
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, globalarray 42, 304, 173;
+				}
+			}
+
+			Else // If weapon is unknown 
+			{
+				Usesammo
+				{
+					drawstring DIGIFONT_SMALL, SaeHUDGr, globalarray 42, 304, 177;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo1, Alignment(left), fillzeros, 280, 181;
+					usessecondaryammo
+						{
+							drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 280, 181;
+							drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, Ammo2, Alignment(right), fillzeros, 275, 181;
+						}
+				}
+				/*
+				ELSE //melee
+				{
+					drawstring DIGIFONT_LARGE, WHITE, "AMMO", 304, 173;
+				}
+				*/
+			}
+			//////////////////DUAL AMMO DISPLAY TO SHOW EACH WEAPON///////////////////////////////////
+			IsSelected Rifle
+			{
+				InInventory DualWieldingDMRs
+				{
+					// drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 263, 181;
+					// drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, Alignment(right), fillzeros, 260, 181;
+					
+					drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, 255, 185;
+					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, alignment(left), 257, 185;
+				}
+			}
+			IsSelected PB_SMG
+			{
+				InInventory DualWieldingSMGs
+				{
+					drawnumber 3, digifont_small, saehudgr, ammo SMGAmmo, 255, 185;
+					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+					drawnumber 3, digifont_small, saehudgr, ammo LeftSMGAmmo, alignment(left), 257, 185;
+				}
+			}
+			IsSelected PB_Revolver
+			{
+				InInventory DualWieldingRevolver
+				{
+					drawnumber 3, digifont_small, saehudgr, ammo LeftRevolverAmmo, 255, 185;
+					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+					drawnumber 3, digifont_small, saehudgr, ammo RevolverAmmo, alignment(left), 257, 185;
+				}
+			}
+			IsSelected PB_Pistol
+			{
+				InInventory DualWieldingPistols
+				{
+					drawnumber 3, digifont_small, saehudgr, ammo SecondaryPistolAmmo, 255, 185;
+					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+					drawnumber 3, digifont_small, saehudgr, ammo PrimaryPistolAmmo, alignment(left), 257, 185;
+				}
+			}
+			/* IsSelected DualCarbines
+			{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftCarbineAmmo, 255, 185;
+				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+				drawnumber 3, digifont_small, saehudgr, ammo XRifleAmmo, alignment(left), 257, 185;
+			} */
+			/* IsSelected DualM2PlasmaRifles
+			{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftM2PlasmagunAmmo, 255, 185;
+				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+				drawnumber 3, digifont_small, saehudgr, ammo RightM2PlasmagunAmmo, alignment(left), 257, 185;
+			} */
+			/* IsSelected DualAutoShotguns
+			{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftASGAmmo, 255, 185;
+				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+				drawnumber 3, digifont_small, saehudgr, ammo AutoShotgunAmmo, alignment(left), 257, 185;
+			} */
+			/* IsSelected DualSSG
+			{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftSSGAmmo, 255, 185;
+				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+				drawnumber 3, digifont_small, saehudgr, ammo RightSSGAmmo, alignment(left), 257, 185;
+			} */
+			/* IsSelected DualPlasmaRifles
+			{
+				InInventory sae_PA1N
+				{
+				drawnumber 3, digifont_small, saehudgr, ammo LeftPlasmaGunAmmo, 255, 185;
+				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+				drawnumber 3, digifont_small, saehudgr, ammo RightPlasmaGunAmmo, alignment(left), 257, 185;
+				}
+			} */
+		}
+
+		// Light Amp Time
+		InInventory PowerLightAmp
+		{
+			Alpha 0.75
+			DrawBar "BattFus", "BattEMs", POWERUPTIME INFRARED, vertical, 308, 175;
+		}
+		// Radiation Suit Time
+		InInventory PowerIronFeet
+		{
+			Alpha 0.75
+			DrawBar "biohaz", "biohazem", poweruptime radsuit, vertical, 305, 185;
+		}
+		// AIR SUPPLY
+		InInventory sae_Underwater
+		{
+			Alpha 0.35
+			{
+				Drawbar "Airsupl", "airsupem", airtime, horizontal, reverse, 138, 195;
+				Drawbar "Airsupr", "airsupem", airtime, horizontal, 159, 195;
+			}
+		}
+		// LEVEL STATS AND TOGGLE
+		
+		IfCvarInt udv_togglekills, 1
+		{
+		Alpha 0.5
+			{
+				DRAWIMAGE "KILLS", 70, 15;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, KILLS, 94, 19;
+				IfCvarInt udv_totalstats, 1
+				{
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 98, 20;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, MONSTERS, ALIGNMENT(LEFT), 98, 20;
+				}
+			}
+		}
+		IfCvarInt udv_togglesecrets, 1
+		{
+			Alpha 0.5
+			{
+				DRAWIMAGE "SCRTS", 70, 15;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, SECRETS, 94, 24;
+				IfCvarInt udv_totalstats, 1
+				{
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 98, 25;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, TOTALSECRETS, ALIGNMENT(LEFT), 98, 25;
+				}
+			}
+		}
+		IfCvarInt udv_toggleitems, 1
+		{
+			Alpha 0.5
+			{
+				DrawImage "ITEMS", 70, 15;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, ITEMS, 94, 29;
+				IfCvarInt udv_totalstats, 1
+				{
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 98, 30;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, TOTALITEMS, ALIGNMENT(LEFT), 98, 30;
+				}
+			}
+		}
+		InInventory UDV_playername
+		{
+			Alpha 0.5
+			DrawString digifont_small, SaeHUDGr, playername, 160, 12, 0, alignment(center);
+		}
+		InInventory UDV_LevelTime
+		{
+			Alpha 0.5
+			{
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "ENGAGEMENT TIME", 160, 15, 0, alignment(center);
+				DrawString DIGIFONT_SMALL, SaeHUDGR, time, 153, 18, 0, alignment(center);
+			}
+		}
+		// KEYBAR
+		Alpha 0.5
+		{
+			drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 295, 189;
+			drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 289, 189;
+			drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 283, 189;
+		}
+		// GRENADE count placeholder, not used in Brutal Doom v19
+		Alpha 0.75
+		{
+			/* InInventory J_HandGrenadeAmmo, 1
+				{
+					drawimage "jgrenade", 275, 174;
+					drawnumber 2, digifont_small, SaeHUDGr, ammo J_HandGrenadeAmmo, 273, 176;
+					InInventory HandGrenadeAmmo,1
+					{
+						drawnumber 2, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 273, 179;
+					}
+					InInventory GrenadeAmmo,1
+					{
+						drawnumber 2, digifont_small, SaeHUDGr, ammo GrenadeAmmo, 273, 179;
+					}
+				} */
+			InInventory HandGrenadeAmmo, 1
+				{
+					drawimage "grenade", 275, 174;
+					drawnumber 2, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 273, 179;
+				}
+			/* Else InInventory GrenadeAmmo, 1 //BDJ20
+				{
+					drawimage "grenade", 275, 174;
+					drawnumber 2, digifont_small, SaeHUDGr, ammo GrenadeAmmo, 273, 179;
+				} */
+		}
+		// INVENTORY
+		InInventory sae_ToggleInv
+		{
+			drawselectedinventory alwaysshowcounter, centerbottom, digifont_small, 251, 196, 259, 192;
+		}
+		// Light up UAC logo when extra strength active
+		InInventory PowerStrength
+		{
+			DRAWIMAGE "BERS01", -18, 190;
+		}
+		// Light up red recording light when autosave active
+		InInventory sae_recording
+		{
+			DRAWIMAGE "RECO01", -8, 187;
+		}
+
+		// BEGIN Multi-Weapon Display
+		Alpha 0.75
+		{
+			IsSelected Rifle
+			{
+				InInventory DualWieldingDMRs, 1
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+				}
+			}
+			IsSelected PB_Pistol
+			{
+				InInventory DualWieldingPistols, 1 
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+				}
+
+				InInventory SilencerEquipped, 1 
+				{
+					drawstring digifont_small, SaeHUDGR, "SLNT", 304, 182;
+				}
+
+				InInventory ToggledPistolBurstFire, 1 
+				{
+					drawstring digifont_small, SaeHUDGR, "BRST", 304, 184;
+				}
+			}
+			IsSelected PB_SSG
+			{
+				InInventory DualWieldingSSG, 1
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+				}
+			}
+			/* IsSelected Plasma_Gun
+			{
+				InInventory DualPlasmaChecker, 3
+				{
+					drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+				}
+			} */
+		}
+		InInventory sae_ToggleAmmo  //BEGIN Reserve Ammo Toggle
+		{
+			Alpha 0.35 
+			{
+				/* InInventory SATCHELCHARGEAMMO, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "SATCHEL CHARGES", 330, 122;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo SATCHELCHARGEAMMO, 338, 122;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 122;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity SATCHELCHARGEAMMO, alignment(left), 340, 122;
+				} */
+				/* InInventory JAWBONEAMMO, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "JAWBONES", 330, 125;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo JAWBONEAMMO, 338, 125;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 125;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity JAWBONEAMMO, alignment(left), 340, 125;
+				} */
+				/* InInventory PIPEBOMBAMMO, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "PIPEBOMBS", 330, 128;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo PIPEBOMBAMMO, 338, 128;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 128;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity PIPEBOMBAMMO, alignment(left), 340, 128;
+				} */
+				InInventory PistolBullets, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "P.Bullets", 330, 131;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo PistolBullets, 338, 131;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 131;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity PistolBullets, alignment(left), 340, 131;
+				}
+				InInventory NewClip, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Bullets", 330, 134;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo NewClip, 338, 134;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 134;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity NewClip, alignment(left), 340, 134;
+				}
+				InInventory NewShell, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Shells", 330, 137;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo NewShell, 338, 137;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 137;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity NewShell, alignment(left), 340, 137;
+				}
+				InInventory RocketAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Rockets", 330, 140;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo RocketAmmo, 338, 140;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 140;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity RocketAmmo, alignment(left), 340, 140;
+				}
+				InInventory SpecialGrenadeRounds, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Spc. Grenade", 330, 143;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo SpecialGrenadeRounds, 338, 143;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 143;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity SpecialGrenadeRounds, alignment(left), 340, 143;
+				}
+				InInventory HighExplosiveGrenadeRounds, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "High Expl.", 330, 146;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo HighExplosiveGrenadeRounds, 338, 146;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 146;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity HighExplosiveGrenadeRounds, alignment(left), 340, 146;
+				}
+				InInventory Cell, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Cells", 330, 149;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo Cell, 338, 149;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 149;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Cell, alignment(left), 340, 149;
+				}
+				InInventory MiniHellRocketAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Missiles", 330, 152;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo MiniHellRocketAmmo, 338, 152;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 152;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MiniHellRocketAmmo, alignment(left), 340, 152;
+				}
+				InInventory Gas, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Gas", 330, 155;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo Gas, 338, 155;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 155;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Gas, alignment(left), 340, 155;
+				}
+				InInventory DemonPower, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Energy", 330, 158;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo DemonPower, 338, 158;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 158;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity DemonPower, alignment(left), 340, 158;
+				}
+				InInventory MineAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Grenades", 330, 161;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo MineAmmo, 338, 161;
+					drawstring digifont_small, SaeHUDGr, "/", 340, 161;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MineAmmo, alignment(left), 340, 161;
+				}
+			}
+		}
+	}
+
+	//Bloody eyes
+	IfCvarInt udv_redtint, 1
+	{
+		IfHealth not 21
+		{
+			IfHealth not 6
+			{
+				Alpha 0.75
+				DrawImage "RED01", -54, 0;
+			}
+			Else
+			{
+				Alpha 0.25
+				DrawImage "RED00", -54, 0;
+			}
+		}
+	}
+}

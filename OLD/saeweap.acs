@@ -496,208 +496,202 @@ str BRUTAL64_TACTICAL_weaponslist[BRUTAL64_TACTICAL_NUMBEROFWEAPONS][6] =
 
 Function void AmmoBarForHUD (str ammotype, str ammoempty, str ammoverylow, str ammolow, str ammogood)
 {
-  // Store ammo type's current amount in a variable as a percentage
-  int sae_ammoper = CheckInventory(ammotype) * 100 / GetAmmoCapacity(ammotype);
+	// Store ammo type's current amount in a variable as a percentage
+	int sae_ammoper = CheckInventory(ammotype) * 100 / GetAmmoCapacity(ammotype);
   
-  If(ammotype == "PlasmaHeat") //for Johnny Doom
-  {
-	If(sae_ammoper >= 0 && sae_ammoper < 60) GiveInventory(ammogood,1);
-	Else If(sae_ammoper >= 60 && sae_ammoper < 80) GiveInventory(ammolow,1);
-	Else If (sae_ammoper >=80) GiveInventory(ammoverylow,1);
-  }
-  Else
-  {
-  If(CheckInventory(ammotype) == D_AMMOEMPTY)
-  {
-	GiveInventory(ammoverylow, 1);
-	GiveInventory(ammoempty, 1);
-  }
-  Else If(sae_ammoper <= D_AMMOVERYLOW && sae_ammoper > D_AMMOEMPTY) GiveInventory(ammoverylow, 1);
-  Else If(sae_ammoper >= D_AMMOVERYLOW && sae_ammoper < D_AMMOLOW) GiveInventory(ammolow, 1);
-  Else If(sae_ammoper >= D_AMMOLOW) GiveInventory(ammogood, 1);
-  }
-  
+   //for Johnny Doom
+	If(ammotype == "PlasmaHeat")
+	{
+		If(sae_ammoper >= 0 && sae_ammoper < 60) GiveInventory(ammogood,1);
+		Else If(sae_ammoper >= 60 && sae_ammoper < 80) GiveInventory(ammolow,1);
+		Else If (sae_ammoper >=80) GiveInventory(ammoverylow,1);
+	}
+	Else
+	{
+		If(CheckInventory(ammotype) == D_AMMOEMPTY)
+		{
+			GiveInventory(ammoverylow, 1);
+			GiveInventory(ammoempty, 1);
+		}
+		Else If(sae_ammoper <= D_AMMOVERYLOW && sae_ammoper > D_AMMOEMPTY) GiveInventory(ammoverylow, 1);
+		Else If(sae_ammoper >= D_AMMOVERYLOW && sae_ammoper < D_AMMOLOW) GiveInventory(ammolow, 1);
+		Else If(sae_ammoper >= D_AMMOLOW) GiveInventory(ammogood, 1);
+	}
 }
 
 Function void GetEquippedWeaponAndAmmo (void)
 {
-  	If(is_vanilla)
+	If(is_vanilla)
 	{
 		For(int i; i < VANILLA_NUMBEROFWEAPONS; i++)
-		  {
+		{
 			If(CheckWeapon(VANILLA_weaponslist[i][0]))
 			{
-			  GiveInventory("sae_known", 1);
-			  sae_WNAME[PlayerNumber()] = VANILLA_weaponslist[i][4];
-			  sae_SecAmmoCap[PlayerNumber()] = GetAmmoCapacity(VANILLA_weaponslist[i][2]);
-			  If ( sae_SecAmmoCap[PlayerNumber()] > 2 ) GiveInventory("UDV_SecAmmoCap", 1);
-			  Else TakeInventory("UDV_SecAmmoCap", 1);
-			  AmmoBarForHUD(VANILLA_weaponslist[i][1], "sae_PAE", "sae_PrimaryAmmoVeryLow", "sae_PrimaryAmmoLow", "sae_PrimaryAmmoOk");
-			  AmmoBarForHUD(VANILLA_weaponslist[i][2], "sae_SAE", "sae_SecondaryAmmoVeryLow", "sae_SecondaryAmmoLow", "sae_SecondaryAmmoOk");
-			  
-			  If((VANILLA_weaponslist[i][3]) == "Yes") GiveInventory("sae_Secondary", 1);
-			  Else TakeInventory("sae_Secondary", 1);
+				GiveInventory("sae_known", 1);
 
-			  If( VANILLA_weaponslist[i][1] == "NoPrimary" ) 
-				{
-					GiveInventory("sae_Melee", 1);
-				}
-			  Else
-				{
-					TakeInventory("sae_Melee", 1);
-				}
+				sae_WNAME[PlayerNumber()] = VANILLA_weaponslist[i][4];
+				sae_SecAmmoCap[PlayerNumber()] = GetAmmoCapacity(VANILLA_weaponslist[i][2]);
 
-			  Break;
+				If ( sae_SecAmmoCap[PlayerNumber()] > 2 ) GiveInventory("UDV_SecAmmoCap", 1);
+				Else TakeInventory("UDV_SecAmmoCap", 1);
+
+				AmmoBarForHUD(VANILLA_weaponslist[i][1], "sae_PAE", "sae_PrimaryAmmoVeryLow", "sae_PrimaryAmmoLow", "sae_PrimaryAmmoOk");
+				AmmoBarForHUD(VANILLA_weaponslist[i][2], "sae_SAE", "sae_SecondaryAmmoVeryLow", "sae_SecondaryAmmoLow", "sae_SecondaryAmmoOk");
+				
+				If((VANILLA_weaponslist[i][3]) == "Yes") GiveInventory("sae_Secondary", 1);
+				Else TakeInventory("sae_Secondary", 1);
+
+				If( VANILLA_weaponslist[i][1] == "NoPrimary" ) GiveInventory("sae_Melee", 1);
+				Else TakeInventory("sae_Melee", 1);
+
+				Break;
 			}
 			Else
 			{
 				TakeInventory("sae_known", 1);
 				sae_WNAME[PlayerNumber()] = StrLeft(GetWeapon(), 10);
 			}
-		  }
+		}
 	}
 	Else If(is_brutal)
 	{
-		  For(int i; i < BRUTAL_NUMBEROFWEAPONS; i++)
-		  {
+		For(int i; i < BRUTAL_NUMBEROFWEAPONS; i++)
+		{
 			If(CheckWeapon(BRUTAL_weaponslist[i][0]))
 			{
-			  GiveInventory("sae_known", 1);
-			  sae_WNAME[PlayerNumber()] = BRUTAL_weaponslist[i][4];
-			  sae_SecAmmoCap[PlayerNumber()] = GetAmmoCapacity(BRUTAL_weaponslist[i][2]);
-			  If ( sae_SecAmmoCap[PlayerNumber()] > 2 ) GiveInventory("UDV_SecAmmoCap", 1);
-			  Else TakeInventory("UDV_SecAmmoCap", 1);
-			  AmmoBarForHUD(BRUTAL_weaponslist[i][1], "sae_PAE", "sae_PrimaryAmmoVeryLow", "sae_PrimaryAmmoLow", "sae_PrimaryAmmoOk");
-			  AmmoBarForHUD(BRUTAL_weaponslist[i][2], "sae_SAE", "sae_SecondaryAmmoVeryLow", "sae_SecondaryAmmoLow", "sae_SecondaryAmmoOk");
-			  
-			  If((BRUTAL_weaponslist[i][3]) == "Yes") GiveInventory("sae_Secondary", 1);
-			  Else TakeInventory("sae_Secondary", 1);
+				GiveInventory("sae_known", 1);
 
-			  If( BRUTAL_weaponslist[i][1] == "NoPrimary" ) 
-				{
-					GiveInventory("sae_Melee", 1);
-				}
-			  Else
-				{
-					TakeInventory("sae_Melee", 1);
-				}
+				sae_WNAME[PlayerNumber()] = BRUTAL_weaponslist[i][4];
+				sae_SecAmmoCap[PlayerNumber()] = GetAmmoCapacity(BRUTAL_weaponslist[i][2]);
 
-			  Break;
+				If ( sae_SecAmmoCap[PlayerNumber()] > 2 ) GiveInventory("UDV_SecAmmoCap", 1);
+				Else TakeInventory("UDV_SecAmmoCap", 1);
+
+				AmmoBarForHUD(BRUTAL_weaponslist[i][1], "sae_PAE", "sae_PrimaryAmmoVeryLow", "sae_PrimaryAmmoLow", "sae_PrimaryAmmoOk");
+				AmmoBarForHUD(BRUTAL_weaponslist[i][2], "sae_SAE", "sae_SecondaryAmmoVeryLow", "sae_SecondaryAmmoLow", "sae_SecondaryAmmoOk");
+				
+				If((BRUTAL_weaponslist[i][3]) == "Yes") GiveInventory("sae_Secondary", 1);
+				Else TakeInventory("sae_Secondary", 1);
+
+				If( BRUTAL_weaponslist[i][1] == "NoPrimary" ) GiveInventory("sae_Melee", 1);
+				Else TakeInventory("sae_Melee", 1);
+
+				Break;
 			}
 			Else
 			{
 				TakeInventory("sae_known", 1);
 				sae_WNAME[PlayerNumber()] = StrLeft(GetWeapon(), 10);
 			}
-		  }
-	}//End is_brutal
+		}
+	}
 	Else If(is_brutality)
 	{
-		 int UDVWeaponTotal = PB_STANDARDWEAPONS + UAC_EXP_WEAPONS;
-		  For(int i; i < PB_NUMBEROFWEAPONS; i++)
-		  {
+		int UDVWeaponTotal = PB_STANDARDWEAPONS + UAC_EXP_WEAPONS;
+		For(int i; i < PB_NUMBEROFWEAPONS; i++)
+		{
 			If(CheckWeapon(PB_weaponslist[i][0]))
 			{
-			  GiveInventory("sae_known", 1);
-			  sae_WNAME[PlayerNumber()] = PB_weaponslist[i][4];
-			  If(CheckInventory("GrenadeTypeLVG") && CheckWeapon("Super_Grenade_Launcher") )
+				GiveInventory("sae_known", 1);
+				// Weapon Short Name
+				sae_WNAME[PlayerNumber()] = 'Test';
+
+				If(CheckInventory("GrenadeTypeLVG") && CheckWeapon("Super_Grenade_Launcher") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 22][4];
 				}
-			  Else If( CheckInventory("GrenadeTypeIncendiary") && CheckWeapon("Super_Grenade_Launcher") )
+				Else If( CheckInventory("GrenadeTypeIncendiary") && CheckWeapon("Super_Grenade_Launcher") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 23][4];
 				}
-			  Else If(CheckInventory("GrenadeTypeCryo") && CheckWeapon("Super_Grenade_Launcher") )
+				Else If(CheckInventory("GrenadeTypeCryo") && CheckWeapon("Super_Grenade_Launcher") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 24][4];
 				}
-			  Else If(CheckInventory("GrenadeTypeAcid") && CheckWeapon("Super_Grenade_Launcher") )
+				Else If(CheckInventory("GrenadeTypeAcid") && CheckWeapon("Super_Grenade_Launcher") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 25][4];
 				}
-			  Else If(CheckInventory("FiremodeFreezerBeam") && CheckWeapon("FreezerRifle") )
+				Else If(CheckInventory("FiremodeFreezerBeam") && CheckWeapon("FreezerRifle") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 21][4];
 				}
-			  Else If(CheckInventory("HasRailGun") && CheckWeapon("HellishMissileLauncher") )
+				Else If(CheckInventory("HasRailGun") && CheckWeapon("HellishMissileLauncher") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 19][4];
 				}
-			  Else If(CheckInventory("DaedabusSlimeSelected") && CheckWeapon("FlameCannon") )
+				Else If(CheckInventory("DaedabusSlimeSelected") && CheckWeapon("FlameCannon") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 20][4];
 				}
-			  Else If(CheckInventory("HasFragmentation") && CheckWeapon("Grenade_Launcher") )
+				Else If(CheckInventory("HasFragmentation") && CheckWeapon("Grenade_Launcher") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 7][4];
 				}
-			  Else If(CheckInventory("HasSlugs") && CheckWeapon("Shot_Gun") )
+				Else If(CheckInventory("HasSlugs") && CheckWeapon("Shot_Gun") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 16][4];
 				}
-			  Else If(CheckInventory("SilencerEquipped") && CheckWeapon("BDPistol") )
+				Else If(CheckInventory("SilencerEquipped") && CheckWeapon("BDPistol") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 17][4];
 				}
-			  Else If(CheckInventory("EquipDeathDealer") && CheckWeapon("Mini_Gun") )
+				Else If(CheckInventory("EquipDeathDealer") && CheckWeapon("Mini_Gun") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 18][4];
 				}
-			  Else If(CheckInventory("InfraredActivated") && CheckWeapon("Rail_gun") )
+				Else If(CheckInventory("InfraredActivated") && CheckWeapon("Rail_gun") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 26][4];
 				}
-			  Else If(CheckInventory("BFGGuardMode") && CheckWeapon("BIG_FUCKING_GUN_MKIV") )
+				Else If(CheckInventory("BFGGuardMode") && CheckWeapon("BIG_FUCKING_GUN_MKIV") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 27][4];
 				}
-			  Else If(CheckInventory("BFGLaserMode") && CheckWeapon("BIG_FUCKING_GUN_MKIV") )
+				Else If(CheckInventory("BFGLaserMode") && CheckWeapon("BIG_FUCKING_GUN_MKIV") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 28][4];
 				}
-			  Else If(CheckInventory("FireModeAcidGun") && CheckWeapon("Hell_rifle") )
+				Else If(CheckInventory("FireModeAcidGun") && CheckWeapon("Hell_rifle") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 29][4];
 				}
-			  Else If( CheckInventory("EquippedNailRounds") && CheckWeapon("HMG") )
+				Else If( CheckInventory("EquippedNailRounds") && CheckWeapon("HMG") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 30][4];
 				}
-			  Else If(CheckInventory("HasDragonBreath") && CheckWeapon("Shot_Gun") )
+				Else If(CheckInventory("HasDragonBreath") && CheckWeapon("Shot_Gun") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 45][4];
 				}
-			  Else If(CheckInventory("DropShotMode") && CheckWeapon("Excavator") )
+				Else If(CheckInventory("DropShotMode") && CheckWeapon("Excavator") )
 				{
 					sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotal + 46][4];
 				}
-			  sae_SecAmmoCap[PlayerNumber()] = GetAmmoCapacity(PB_weaponslist[i][2]);
-			  If ( sae_SecAmmoCap[PlayerNumber()] > 2 ) GiveInventory("UDV_SecAmmoCap", 1);
-			  Else TakeInventory("UDV_SecAmmoCap", 1);
-			  AmmoBarForHUD(PB_weaponslist[i][1], "sae_PAE", "sae_PrimaryAmmoVeryLow", "sae_PrimaryAmmoLow", "sae_PrimaryAmmoOk");
-			  AmmoBarForHUD(PB_weaponslist[i][2], "sae_SAE", "sae_SecondaryAmmoVeryLow", "sae_SecondaryAmmoLow", "sae_SecondaryAmmoOk");
+				
+				sae_SecAmmoCap[PlayerNumber()] = GetAmmoCapacity(PB_weaponslist[i][2]);
 
-			  If((PB_weaponslist[i][3]) == "Yes") GiveInventory("sae_Secondary", 1);
-			  Else TakeInventory("sae_Secondary", 1);
+				If ( sae_SecAmmoCap[PlayerNumber()] > 2 ) GiveInventory("UDV_SecAmmoCap", 1);
+				Else TakeInventory("UDV_SecAmmoCap", 1);
 
-			  If( PB_weaponslist[i][1] == "NoPrimary" ) 
-				{
-					GiveInventory("sae_Melee", 1);
-				}
-			  Else
-				{
-					TakeInventory("sae_Melee", 1);
-				}
-			  Break;
+				AmmoBarForHUD(PB_weaponslist[i][1], "sae_PAE", "sae_PrimaryAmmoVeryLow", "sae_PrimaryAmmoLow", "sae_PrimaryAmmoOk");
+				AmmoBarForHUD(PB_weaponslist[i][2], "sae_SAE", "sae_SecondaryAmmoVeryLow", "sae_SecondaryAmmoLow", "sae_SecondaryAmmoOk");
+
+				If((PB_weaponslist[i][3]) == "Yes") GiveInventory("sae_Secondary", 1);
+				Else TakeInventory("sae_Secondary", 1);
+
+				If( PB_weaponslist[i][1] == "NoPrimary" ) GiveInventory("sae_Melee", 1);
+				Else TakeInventory("sae_Melee", 1);
+				
+				Break;
 			}
 			Else
 			{
 				TakeInventory("sae_known", 1);
 				sae_WNAME[PlayerNumber()] = StrLeft(GetWeapon(), 10);
 			}
-		  }
-	}//end is_brutality
+		}
+	}
 	Else If (is_brutalpack)
 	{
 		  For(int i; i < BP_NUMBEROFWEAPONS; i++)

@@ -107,15 +107,15 @@ ACTOR udv_ambient : sae_Toggle {}
 ACTOR udv_assignname : sae_Toggle {}
 ACTOR udv_restorecarbines : sae_Toggle {}
 
-Actor HasBarrel : Inventory
+/* Actor HasBarrel : Inventory
 {
-inventory.maxamount 1
-}
+	inventory.maxamount 1
+} */
 
-Actor TargetIsAMarine : Inventory
+/* Actor TargetIsAMarine : Inventory
 {
 inventory.maxamount 1
-}
+} */
 
 ACTOR udv_helmet : Weapon 25098
 {
