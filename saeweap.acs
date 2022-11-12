@@ -173,8 +173,8 @@ int sae_SecAmmoCap[8];
 /* PB */
 	#define UAC_EXP_WEAPONS 2 // Number of special circumstance weapons (Pipebombs and Satchel Charge)
 
-	#define PB_NumOfWeap	82
-	#define PB_StandWeap 28 //Number of standard weapons to show in weaponslist
+	#define PB_NumOfWeap	45
+	#define PB_StandWeap	22 //Number of standard weapons to show in weaponslist
 
 	// Weapons list - Columns descriptions are as follows:
 	// 1st column ---> weapon.
@@ -182,95 +182,60 @@ int sae_SecAmmoCap[8];
 	// 3rd column ---> secondary ammo (put "NoSecondary" if the weapon doesn't use secondary ammo).
 	// 4th column ---> Shows Secondary Ammo Counter (put "Yes" if it does or "No" if the weapon doesn't show a unique secondary counter).
 	// 5th column ---> Display name of weapon for Ammo Counter (Needs to be 5 or fewer characters to fit on display in all resolutions)
+	// 6th column ---> Display name in weapon list
+	// 7th column ---> Is shown weapon
 
-	str PB_weaponslist[PB_NumOfWeap][6] =
+	str PB_weaponslist[PB_NumOfWeap][7] =
 	{
-	{"PB_Chainsaw",							"Gas",							"NoSecondary",				"No",	"SAW",		"Chainsaw"},//	0
-	{"PB_Axe",								"NoPrimary",					"NoSecondary",				"No",	"AXE",		"Fire Axe"},//	0
-	{"PB_SMG",								"PistolBullets",				"SMGAmmo",					"Yes",	"SMG",		"UAC-17 SMG"},//	1
-	{"PB_MP40",								"PistolBullets",				"MP40Ammo",					"Yes",	"MP40",		"Maschinenpistole 40"},//	7
-	{"PB_Revolver",							"PistolBullets",				"RevolverAmmo",				"Yes",	"RVLVR",	"Revolver"},//	2
-	{"PB_Pistol",							"PistolBullets",				"PrimaryPistolAmmo",		"Yes",	"PISTL",	"UAC .45 Pistol"},//	3
-	{"PB_Deagle",							"PistolBullets",				"DeagleAmmo",				"Yes",	"DEAGL",	"Desert Eagle .50"},
-	{"PB_QuadSG",							"NewShell",						"QSSGAmmoCounter",			"Yes",	"QUAD",		"Quad-Barrel Shotgun"},
-	{"PB_SSG",								"NewShell",						"SSGAmmoCounter",			"Yes",	"SSG",		"Sawed-Off Shotgun"},//	6
-	{"PB_Autoshotgun",						"NewShell",						"AutoShotgunAmmo",			"Yes",	"AUTO",		"Auto-Shotgun"},//	4
-	{"PB_Shotgun",							"NewShell",						"ShotgunAmmo",				"Yes",	"SHOT",		"Shotgun"},//	5
-	{"PB_Carbine",							"NewClip",						"XRifleAmmo",				"Yes",	"UAC41",	"UAC41 Carbine"},//	9
-	{"Rifle",								"NewClip",						"RifleAmmo",				"Yes",	"UAC30",	"UAC30 DMR"},//	10
-	{"PB_Minigun",							"NewClip",						"NoSecondary",				"No",	"MINI",		"Minigun"},//	8
-	{"PB_LMG",								"NewClip",						"LMGAmmo",					"Yes",	"UC349",	"UAC349 LMG"},//	10
-	{"PB_Nailgun",							"NewClip",						"NoSecondary",					"Yes",	"NAIL",		"Nailgun"},//	7
-	{"Excavator",							"HighExplosiveGrenadeRounds",	"HMGAmmo",					"Yes",	"DRILL",	"Excavator"}, 
-	{"Grenade_Launcher",					"HighExplosiveGrenadeRounds",	"NoSecondary",				"No",	"GRENL",	"Grenade Launcher"},//	12
-	{"PB_SuperGL",							"SpecialGrenadeRounds",			"GrenadeRounds",			"Yes",	"SGL",		"Super G Launcher"},//	11
-	{"PB_RocketLauncher",					"RocketAmmo",					"RocketRounds",				"Yes",	"RCKTL",	"Rocket Launcher"},//	13
-	{"PB_M1Plasma",							"Cell",							"PlasmaAmmo",				"Yes",	"PLSMA",	"Plasma Rifle"},//	15
-	{"PB_PulseCannon",						"Cell",							"PulseCannonAmmo",			"Yes",	"PULSE",	"Pulse Cannon"},
-	{"PB_M2Plasma",							"Cell",							"M2PlasmaAmmo",				"Yes",	"PLSM2",	"M2 Plasma Rifle"},//	14
-	{"PB_Freezer",							"Cell",							"FreezerAmmo",				"Yes",	"FMISL",	"Freezer Rifle"},//	17
-	{"PB_Railgun",							"Cell",							"RailgunAmmo",				"Yes",	"RAIL",		"Rail Gun"},//	16
-	{"BHGEN",								"Cell",							"Cell",						"No",	"BHGEN",	"Black Hole Gen"},//	18
-	{"PlasmaBeam",							"Cell",							"NoSecondary",				"No",	"BM11K",	"BFG Beam 11K"},//	19
-	{"PB_BFG9000",							"Cell",							"NoSecondary",				"No",	"BFG9K",	"BFG9K MKIV"},//	20
-	// {"HellishMissileLauncher",				"MiniHellRocketAmmo",			"MiniHellRocketAmmo",		"No",	"HELL",		"Revenant Launcher"},//	21
-	{"PB_Flamethrower",						"Gas",							"NoSecondary",				"Yes",	"FLAME",	"Flame Cannon"},//	22
-	{"Hell_rifle",							"DemonPower",					"HellAmmo",					"Yes",	"HRIFL",	"Demon Tech Rifle"},//	23
-	// {"Quad_SSG",							"NewShell",						"NoSecondary",				"No",	"QUAD",		"Quad-Barrel"},//	25
-	{"SecretWeapon_MP40",					"NewClip",						"MP40Ammo",					"Yes",	"MP40",		"MP40"},//	24
-	// My pipebomb goes under this line, specifically for my pipebomb mod - doesn't affect normal display unless pipebomb mod is loaded.
-	{"det_pipebomb",						"pipebombammo",					"pipebombammo",				"No",	"PIPE",		"Detonator"},// 25 - For my Pipebombs mod
-	{"det_satchelcharge",					"satchelchargeammo",			"satchelchargeammo",		"No",	"STCHG",	"SC Detonator"},
+	{"PB_Axe",								"NoPrimary",					"NoSecondary",				"No",	"AXE",		"Fire Axe", 				"YES"},			//	0
+	{"PB_Chainsaw",							"Gas",							"NoSecondary",				"No",	"SAW",		"Chainsaw", 				"YES"},			//	1
+	{"Melee_Attacks",						"NoPrimary",					"NoSecondary",				"No",	"FISTS",	"Fists", 					"YES"},				//	2
+	{"PB_Pistol",							"PistolBullets",				"PrimaryPistolAmmo",		"Yes",	"PISTL",	".45 Pistol", 		"YES"},		//	3
+	{"PB_Revolver",							"PistolBullets",				"RevolverAmmo",				"Yes",	"MGNM",		".500 Magnum", 			"YES"},			//	4
+	{"PB_MP40",								"PistolBullets",				"MP40Ammo",					"Yes",	"MP40",		"Maschinenpistole 40", 		"HIDDEN"},	//	25
+	{"PB_SMG",								"PistolBullets",				"SMGAmmo",					"Yes",	"UAC17",	"UAC-17 SMG", 				"YES"},			//	5
+	{"PB_Shotgun",							"NewShell",						"ShotgunAmmo",				"Yes",	"SHOT",		"Shotgun", 					"YES"},				//	6
+	{"PB_Autoshotgun",						"NewShell",						"AutoShotgunAmmo",			"Yes",	"AUTO",		"Auto-Shotgun", 			"YES"},		//	7
+	{"PB_SSG",								"NewShell",						"SSGAmmoCounter",			"Yes",	"SSG",		"Sawed-Off Shotgun", 		"YES"},	//	8
+	{"Rifle",								"NewClip",						"RifleAmmo",				"Yes",	"UAC30",	"UAC-30 DMR", 				"YES"},			//	9
+	{"PB_Carbine",							"NewClip",						"XRifleAmmo",				"Yes",	"UAC41",	"UAC-41 Carbine", 			"YES"},		//	10
+	{"PB_Minigun",							"NewClip",						"NoSecondary",				"No",	"MINI",		"UAC Mach-3 Minigun", 		"YES"},				//	11
+	{"PB_Nailgun",							"NewClip",						"NoSecondary",				"Yes",	"NAIL",		"UAC-240 Nailgun", 			"YES"},				//	12
+	{"PB_MG42",								"NewClip",						"MG42HeatLevel",			"Yes",	"MG42",		"Maschinengewehr 42", 		"HIDDEN"},	//	26
+	{"PB_SuperGL",							"SpecialGrenadeRounds",			"GrenadeRounds",			"Yes",	"MGL",		"MGL Auto", 			"YES"},	//	13
+	{"PB_RocketLauncher",					"RocketAmmo",					"RocketRounds",				"Yes",	"RCKTL",	"Rocket Launcher", 			"YES"},		//	14
+	{"PB_M1Plasma",							"Cell",							"PlasmaAmmo",				"Yes",	"PLSMA",	"M1 Plasma Rifle", 		"YES"},		//	15
+	{"PB_M2Plasma",							"Cell",							"M2PlasmaAmmo",				"Yes",	"PLSM2",	"M2 Heavy Plasma Rifle","YES"},		//	16
+	{"PB_Freezer",							"Cell",							"FreezerAmmo",				"Yes",	"CRYO",		"Cryogenic Dispersion Rifle", 			"YES"},		//	17
+	{"PB_Railgun",							"Cell",							"RailgunAmmo",				"Yes",	"RAIL",		"MKIII Railgun", 				"YES"},			//	18
+	{"BHGEN",								"Cell",							"Cell",						"No",	"BHGEN",	"Black Hole Gen", 			"YES"},		//	19
+	{"PB_Unmaker",							"Gas",							"DemonPower",				"Yes",	"UNMKR",	"Unmaker", 					"HIDDEN"},				//	28
+	{"PB_BFG9000",							"Cell",							"NoSecondary",				"No",	"BFG9K",	"BFG 9000 Mark IV", 				"YES"},			//	20
+	{"PB_Flamethrower",						"Gas",							"NoSecondary",				"Yes",	"FLAME",	"UAC-M3 Flamethrower", 			"YES"},		//	21
+	{"Hell_rifle",							"DemonPower",					"HellAmmo",					"Yes",	"DTECH",	"Demon-Tech Rifle", 		"YES"},	//	22
 	// Put all special weapons under this line (Fists, Dual weapons, Alternate Fire Modes, human shields, etc.)
-	{"Melee_Attacks",						"NoPrimary",					"NoSecondary",				"No",	"FIST",		"PlaceHolder"},//	26 -1
-	{"ImpShield",							"Meatshieldgunammo",			"MeatAmmo",					"No",	"MSHLD",	"PlaceHolder"},// 27 -2
-	{"ZmanShield",							"Meatshieldgunammo",			"MeatAmmo",					"No",	"MSHLD",	"PlaceHolder"},// 28 -3
-	{"SguyShield",							"Meatshieldgunammo",			"MeatAmmo",					"No",	"MSHLD",	"PlaceHolder"},// 29 -4
-	{"b_jawbone",							"jawboneammo",					"NoSecondary",				"No",	"JAWB",		"PlaceHolder"},// 30 -5
-	{"HasFragmentation",					"RocketAmmo",					"NoSecondary",				"No",	"FRAG",		"PlaceHolder"},// 31 -6
-	{"DualMagnums",							"PistolBullets",				"AkimboAMmo",				"Yes",	"DUALR",	"PlaceHolder"},// 32 -7
-	{"DualAutoShotguns",					"NewShell",						"DoubleASGAmmo",			"Yes",	"DUALA",	"PlaceHolder"},// 33 -8
-	{"DualSSG",								"NewShell",						"DualSSGAmmo",				"Yes",	"DUALS",	"PlaceHolder"},// 34 -9
-	{"DualWieldingDMRs",					"NewClip",						"DoubleRifleAmmo",			"Yes",	"DUALU",	"PlaceHolder"},// 35 -10
-	{"DualCarbines",						"NewClip",						"DoubleCarbineAmmo",		"Yes",	"DUALC",	"PlaceHolder"},// 36 -11
-	{"DualPlasmaRifles",					"Cell",							"DoublePlasmaGunAmmo",		"Yes",	"DLPLS",	"PlaceHolder"},// 37 -12
-	{"DualPlasmaRifles",					"Cell",							"DoublePulseCannonAmmo",	"Yes",	"DLPUL",	"PlaceHolder"},
-	{"DualM2PlasmaRifles",					"Cell",							"DoubleM2PlasmaGunAmmo",	"Yes",	"DLPM2",	"PlaceHolder"},// 38 -13
-	{"Handgun",								"PistolBullets",				"HandgunAmmo",				"Yes",	"DUALP",	"PlaceHolder"},//	39 -14
-	{"HasSlugs",							"NewShell",						"ShotgunAmmo",				"Yes",	"SLUG",		"PlaceHolder"},// 40 -15
-	{"SilencerEquipped",					"PistolBullets",				"PistolAmmo",				"Yes",	"SPSTL",	"PlaceHolder"},// 41 -16
-	{"EquipDeathDealer",					"NewClip",						"NoSecondary",				"No",	"TPLMG",	"PlaceHolder"},// 42 -17
-	{"HasRailGun",							"MiniHellRocketAmmo",			"MiniHellRocketAmmo",		"No",	"HRAIL",	"PlaceHolder"},//	43 -18
-	{"DaedabusSlimeSelected",				"Gas",							"NoSecondary",				"No",	"SLIME",	"PlaceHolder"},//	44 -19
-	{"FireModeFreezerBeam",					"Cell",							"FreezerAmmo",				"Yes",	"FRZRY",	"PlaceHolder"},//	45 -20
-	{"Super_Grenade_Launcher_LVG",			"SpecialGrenadeRounds",			"GrenadeRounds",			"Yes",	"SGL",		"PlaceHolder"},//	46 -21
-	{"Super_Grenade_Launcher_Incendiary",	"SpecialGrenadeRounds",			"GrenadeRounds",			"Yes",	"SGL",		"PlaceHolder"},//	47 -22
-	{"Super_Grenade_Launcher_Cryo",			"SpecialGrenadeRounds",			"GrenadeRounds",			"Yes",	"SGL",		"PlaceHolder"},//	48 -23
-	{"Super_Grenade_Launcher_Acid",			"SpecialGrenadeRounds",			"GrenadeRounds",			"Yes",	"SGL",		"PlaceHolder"},//	49 -24
-	{"InfraredActivated",					"Cell",							"RailgunAmmo",				"Yes",	"INFRD",	"PlaceHolder"},//	50 -25
-	{"BFGGuardMode",						"Cell",							"NoSecondary",				"No",	"GUARD",	"PlaceHolder"},//	51 -26
-	{"BFGLaserMode",						"Cell",							"NoSecondary",				"No",	"LASER",	"PlaceHolder"},//	52 -27
-	{"FireModeAcidGun",						"DemonPower",					"HellAmmo",					"Yes",	"CAUST",	"PlaceHolder"},//	53 -28
-	{"EquippedNailRounds",					"NewClip",						"HMGAmmo",					"Yes",	"HRPN",		"PlaceHolder"},//	54 -29
-	{"VanillaRifle",						"NewClip",						"VanillaRifleAmmo",			"Yes",	"Rifle",	"PlaceHolder"}, //55 -30
-	{"DualVanillaRifles",					"NewClip",						"DoubleVanillaRifleAmmo",	"Yes",	"DLAR",		"PlaceHolder"},// 56 -31
-	{"Vanilla_Mini_Gun",					"NewClip",						"NoSecondary",				"No",	"MINI",		"Minigun"},//	8 -32
-	{"Vanilla_SSG",							"NewShell",						"SSGAmmoCounter2",			"Yes",	"SSG",		"Coach Gun"},//	57 -33
-	{"BIG_FUCKING_GUN",						"Cell",							"NoSecondary",				"No",	"BFG9K",	"BFG 9000"},//	20 -34
-	{"Traditional_Fist",					"NoPrimary",					"NoSecondary",				"No",	"FIST",		"PlaceHolder"},//	58 -35
-	{"Traditional_Chainsaw",				"NoPrimary",					"NoSecondary",				"No",	"SAW",		"Chain Saw"},//	65 -36
-	{"Traditional_Pistol",					"NewClip",						"NoSecondary",				"No",	"9MM",		"9mm Pistol"},//	58 -37
-	{"Traditional_Shotgun",					"NewShell",						"NoSecondary",				"No",	"SHOT",		"Shotgun"},//	59 -38
-	{"Traditional_SSG",						"NewShell",						"NoSecondary",				"No",	"SSG",		"Super Shotgun"},//	60 -39
-	{"Traditional_ChainGun",				"NewClip",						"NoSecondary",				"No",	"CHAIN",	"Chain Gun"},//	61 -40
-	{"Traditional_RocketLauncher",			"RocketAmmo",					"NoSecondary",				"No",	"RCKTL",	"Rocket Launcher"},//	62 -41
-	{"Traditional_PlasmaRifle",				"Cell",							"NoSecondary",				"No",	"PLSMA",	"Plasma Gun"},//	63 -42
-	{"Traditional_BFG",						"Cell",							"NoSecondary",				"No",	"BFG9K",	"BFG 9000"},//	64 -43
-	{"HasDragonBreath",						"NewShell",						"NoSecondary",				"No",	"DRGNB",	"PLACEHOLDER"}, // -44
-	{"DropShotMode",						"HighExplosiveGrenadeRounds",	"HMGAmmo",					"Yes",	"DROP",		"Excavator"},
-	{"Vanilla_DualPlasmaRifles",			"Cell",							"DoublePlasmagunAmmo",		"Yes",	"DPLSM",	"PLACEHOLDER"},
-	{"Vanilla_Plasma_Gun",					"Cell",							"PlasmaAmmo",				"Yes",	"PLSMA",	"Plasma Rifle"},//	15
-	{"Unmaker",								"Gas",							"DemonPower",				"Yes",	"UNMKR",	"Unmaker"},
+	// SECRET WEAPONS
+	{"PB_Deagle",							"PistolBullets",				"DeagleAmmo",				"Yes",	"DEAGL",	"UAC .50 Hand Cannon", 		"NO"},	//	23
+	{"PB_QuadSG",							"NewShell",						"QSSGAmmoCounter",			"Yes",	"QUAD",		"Quad-Barrel Shotgun", 		"NO"},	//	24
+	{"PB_PulseCannon",						"Cell",							"PulseCannonAmmo",			"Yes",	"DMAT",		"Dark Matter Rifle", 			"NO"},		//	27
+	{"PB_LMG",								"NewClip",						"LMGAmmo",					"Yes",	"UC349",	"UAC-349 LMG", 				"NO"},			//	29
+	// SHIELDS
+	{"ImpShield",							"Meatshieldgunammo",			"MeatAmmo",					"No",	"MSHLD",	"PlaceHolder", 				"NO"},			//	30
+	{"ZmanShield",							"Meatshieldgunammo",			"MeatAmmo",					"No",	"MSHLD",	"PlaceHolder", 				"NO"},			//	31
+	{"SguyShield",							"Meatshieldgunammo",			"MeatAmmo",					"No",	"MSHLD",	"PlaceHolder", 				"NO"},			//	32
+	// MODES		
+	{"HasFragmentation",					"RocketAmmo",					"NoSecondary",				"No",	"FRAG",		"PlaceHolder", 				"NO"},			//	33
+	{"HasSlugs",							"NewShell",						"ShotgunAmmo",				"Yes",	"SLUG",		"PlaceHolder", 				"NO"},			//	34
+	{"EquipDeathDealer",					"NewClip",						"NoSecondary",				"No",	"TPLMG",	"PlaceHolder", 				"NO"},			//	35
+	{"HasRailGun",							"MiniHellRocketAmmo",			"MiniHellRocketAmmo",		"No",	"HRAIL",	"PlaceHolder", 				"NO"},			//	36
+	{"DaedabusSlimeSelected",				"Gas",							"NoSecondary",				"No",	"SLIME",	"PlaceHolder", 				"NO"},			//	37
+	{"InfraredActivated",					"Cell",							"RailgunAmmo",				"Yes",	"INFRD",	"PlaceHolder", 				"NO"},			//	38
+	{"BFGGuardMode",						"Cell",							"NoSecondary",				"No",	"GUARD",	"PlaceHolder", 				"NO"},			//	39
+	{"BFGLaserMode",						"Cell",							"NoSecondary",				"No",	"LASER",	"PlaceHolder", 				"NO"},			//	40
+	{"FireModeAcidGun",						"DemonPower",					"HellAmmo",					"Yes",	"CAUST",	"PlaceHolder", 				"NO"},			//	41
+	{"EquippedNailRounds",					"NewClip",						"HMGAmmo",					"Yes",	"HRPN",		"PlaceHolder", 				"NO"},			//	42
+	{"VanillaRifle",						"NewClip",						"VanillaRifleAmmo",			"Yes",	"Rifle",	"PlaceHolder", 				"NO"},			//	43
+	{"DualVanillaRifles",					"NewClip",						"DoubleVanillaRifleAmmo",	"Yes",	"DLAR",		"PlaceHolder", 				"NO"},			//	44
 	};
 /* #PB */
 
@@ -860,74 +825,74 @@ Function void GetEquippedWeaponAndAmmo (void)
 					{
 						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 21][4];
 					}
-					Else If( CheckInventory("GrenadeTypeIncendiary") && CheckWeapon("Super_Grenade_Launcher") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 22][4];
-					}
-					Else If(CheckInventory("GrenadeTypeCryo") && CheckWeapon("Super_Grenade_Launcher") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 23][4];
-					}
-					Else If(CheckInventory("GrenadeTypeAcid") && CheckWeapon("Super_Grenade_Launcher") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 24][4];
-					}
-					Else If(CheckInventory("FiremodeFreezerBeam") && CheckWeapon("FreezerRifle") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 20][4];
-					}
-					Else If(CheckInventory("HasRailGun") && CheckWeapon("HellishMissileLauncher") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 18][4];
-					}
-					Else If(CheckInventory("DaedabusSlimeSelected") && CheckWeapon("FlameCannon") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 19][4];
-					}
-					Else If(CheckInventory("HasFragmentation") && CheckWeapon("Grenade_Launcher") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 6][4];
-					}
-					Else If(CheckInventory("HasSlugs") && CheckWeapon("Shot_Gun") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 15][4];
-					}
-					Else If(CheckInventory("SilencerEquipped") && CheckWeapon("BDPistol") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 16][4];
-					}
-					Else If(CheckInventory("EquipDeathDealer") && CheckWeapon("Mini_Gun") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 17][4];
-					}
-					Else If(CheckInventory("InfraredActivated") && CheckWeapon("Rail_gun") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 25][4];
-					}
-					Else If(CheckInventory("BFGGuardMode") && CheckWeapon("BIG_FUCKING_GUN_MKIV") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 26][4];
-					}
-					Else If(CheckInventory("BFGLaserMode") && CheckWeapon("BIG_FUCKING_GUN_MKIV") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 27][4];
-					}
-					Else If(CheckInventory("FireModeAcidGun") && CheckWeapon("Hell_rifle") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 28][4];
-					}
-					Else If( CheckInventory("EquippedNailRounds") && CheckWeapon("HMG") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 29][4];
-					}
-					Else If(CheckInventory("HasDragonBreath") && CheckWeapon("Shot_Gun") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 44][4];
-					}
-					Else If(CheckInventory("DropShotMode") && CheckWeapon("Excavator") )
-					{
-						sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 45][4];
-					}
+					// Else If( CheckInventory("GrenadeTypeIncendiary") && CheckWeapon("Super_Grenade_Launcher") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 22][4];
+					// }
+					// Else If(CheckInventory("GrenadeTypeCryo") && CheckWeapon("Super_Grenade_Launcher") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 23][4];
+					// }
+					// Else If(CheckInventory("GrenadeTypeAcid") && CheckWeapon("Super_Grenade_Launcher") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 24][4];
+					// }
+					// Else If(CheckInventory("FiremodeFreezerBeam") && CheckWeapon("FreezerRifle") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 20][4];
+					// }
+					// Else If(CheckInventory("HasRailGun") && CheckWeapon("HellishMissileLauncher") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 18][4];
+					// }
+					// Else If(CheckInventory("DaedabusSlimeSelected") && CheckWeapon("FlameCannon") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 19][4];
+					// }
+					// Else If(CheckInventory("HasFragmentation") && CheckWeapon("Grenade_Launcher") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 6][4];
+					// }
+					// Else If(CheckInventory("HasSlugs") && CheckWeapon("Shot_Gun") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 15][4];
+					// }
+					// Else If(CheckInventory("SilencerEquipped") && CheckWeapon("BDPistol") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 16][4];
+					// }
+					// Else If(CheckInventory("EquipDeathDealer") && CheckWeapon("Mini_Gun") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 17][4];
+					// }
+					// Else If(CheckInventory("InfraredActivated") && CheckWeapon("Rail_gun") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 25][4];
+					// }
+					// Else If(CheckInventory("BFGGuardMode") && CheckWeapon("BIG_FUCKING_GUN_MKIV") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 26][4];
+					// }
+					// Else If(CheckInventory("BFGLaserMode") && CheckWeapon("BIG_FUCKING_GUN_MKIV") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 27][4];
+					// }
+					// Else If(CheckInventory("FireModeAcidGun") && CheckWeapon("Hell_rifle") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 28][4];
+					// }
+					// Else If( CheckInventory("EquippedNailRounds") && CheckWeapon("HMG") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 29][4];
+					// }
+					// Else If(CheckInventory("HasDragonBreath") && CheckWeapon("Shot_Gun") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 44][4];
+					// }
+					// Else If(CheckInventory("DropShotMode") && CheckWeapon("Excavator") )
+					// {
+					// 	sae_WNAME[PlayerNumber()] = PB_weaponslist[UDVWeaponTotalPB3 + 45][4];
+					// }
 
 					sae_SecAmmoCap[PlayerNumber()] = GetAmmoCapacity(PB_weaponslist[i][2]);
 					If ( sae_SecAmmoCap[PlayerNumber()] > 2 ) GiveInventory("UDV_SecAmmoCap", 1);
@@ -1270,15 +1235,8 @@ Function void GetEquippedWeaponAndAmmo (void)
 Function void BuildWeaponList (void)
 {
 	Int WpnCntr;
-	Int WpnCntr2;
-	Int WpnCntr3;
-	Int WpnCntr4;
-	
 	int i;
-	int j;
 	int list_aspect;
-	int list_aspect2;
-	int list_aspect3;
 	If(GetUserCVAR(PlayerNumber(), "udv_disableweapon"))//disableweapon
 	{
 		If(CheckInventory("exverify"))	WpnCntr = NONE_StandWeap + 2;
@@ -1333,858 +1291,152 @@ Function void BuildWeaponList (void)
 	}//end disableweapon
 	Else//no disableweapon
 	{
-		If(is_vanilla)	//VANILLA
+		If(is_PB3)
 		{
-			//GiveInventory("sae_vanilla",1);
-			If(CheckInventory("exverify"))	WpnCntr = VANILLA_StandWeap + 2;
-			Else WpnCntr = VANILLA_StandWeap;
-
-			For(i = 0; i <= WpnCntr; i++)
+			If(PlayerClass(PlayerNumber()) == 0 )
 			{
-			list_aspect = GetAspectRatio();
-			SetHudSize(930,730,1);
-			SetFont("UDVSmall");
-			If(CheckWeapon(VANILLA_weaponslist[i][0]))
-			{
-				If(list_aspect == ASPECT_4_3)
-				{
-					HudMessage(s:VANILLA_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-				}
-				Else
-				{
-					HudMessage(s:VANILLA_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-				}
-			}
-			Else If(CheckInventory(VANILLA_weaponslist[i][0]))
-			{
-				If(list_aspect == ASPECT_4_3)
-				{
-					HudMessage(s:VANILLA_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-				}
-				Else
-				{
-					HudMessage(s:VANILLA_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-				}
-			}
-			Else
-			{
-				If(list_aspect == ASPECT_4_3)
-				{
-					HudMessage(s:VANILLA_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-				}
-				Else
-				{
-					HudMessage(s:VANILLA_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-				}
-			}
-		  }
-		}
-		Else If(is_brutalv21)
-		{
-			//GiveInventory("sae_BDv20",1);
-			If( PlayerClass(PlayerNumber()) ==  0 || PlayerClass(PlayerNumber()) == 1 )//|| PlayerClass(PlayerNumber()) == 2 ) //Modern/Pistol start
-			{
-				If(CheckInventory("exverify")) WpnCntr = BDV21_StandWeap + 2;
-				Else WpnCntr = BDV21_StandWeap;
-				
-			  For(i = 0; i <= WpnCntr; i++)
-			  {
-				list_aspect = GetAspectRatio();
-				SetHudSize(930,730,1);
-			SetFont("UDVSmall");
-				If(CheckWeapon(BDV21_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-				}
-				Else If(CheckInventory(BDV21_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-				}
-				Else
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-				}
-			  }
-			}
-			Else If( PlayerClass(PlayerNumber()) == 2 ) //Purist
-			{
-				  If(CheckInventory("exverify")) WpnCntr2 = BDV21_PURIST_StandWeap + 2;
-				  Else WpnCntr2 = BDV21_PURIST_StandWeap;
-				
-			  For(j = 0; j <= WpnCntr2; j++)
-			  {
-				list_aspect2 = GetAspectRatio();
-				SetHudSize(930,730,1);
-			SetFont("UDVSmall");
-				If(CheckWeapon(BDV21_PURIST_weaponslist[j][0]))
-				{
-					If(list_aspect2 == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[j][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 1.0);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[j][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 1.0);
-					}
-				}
-				Else If(CheckInventory(BDV21_PURIST_weaponslist[j][0]))
-				{
-					If(list_aspect2 == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[j][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 0.35);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[j][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 0.35);
-					}
-				}
-				Else
-				{
-					If(list_aspect2 == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[j][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 0.15);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[j][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 0.15);
-					}
-				}
-			  }
-			}
-		}//End is_brutalv21
-		Else If(is_PB3)
-		{
-			//GiveInventory("sae_PA1N",1);
-			If( PlayerClass(PlayerNumber()) == 0 )
-			{
-				If(CheckInventory("exverify")) WpnCntr = PB_StandWeap + 2;
-				Else WpnCntr = PB_StandWeap;
-				
-				For(i = 0; i <= WpnCntr; i++)
+				// If(CheckInventory("exverify")) WpnCntr = PB_StandWeap + 2;
+				// Else WpnCntr = PB_StandWeap;
+				For(i = 0; i <= PB_NumOfWeap; i++)
 				{
 					list_aspect = GetAspectRatio();
 					SetHudSize(930,730,1);
 					SetFont("UDVSmall");
-					If(CheckWeapon(PB_weaponslist[i][0]))
+					
+					If((PB_weaponslist[i][6]) == "YES" || ((PB_weaponslist[i][6]) == "HIDDEN" && CheckInventory((PB_weaponslist[i][0])) ) )
 					{
 						If(list_aspect == ASPECT_4_3)
 						{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							If (CheckWeapon("PB_Deagle") && i == 4)//necessary for the special case of the Quad SSG upgrade
+							{
+								HudMessage(s:PB_weaponslist[i+22][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+							Else If (CheckWeapon("PB_QuadSG") && i == 9)//necessary for the special case of the Quad SSG upgrade
+							{
+								HudMessage(s:PB_weaponslist[i+18][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+							Else If (CheckWeapon("PB_LMG") && i == 11)//necessary for the special case of the Quad SSG upgrade
+							{
+								HudMessage(s:PB_weaponslist[29][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+							Else If (CheckWeapon("PB_PulseCannon") && i == 17)//necessary for the special case of the Quad SSG upgrade
+							{
+								HudMessage(s:PB_weaponslist[28][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+							Else If(CheckWeapon(PB_weaponslist[i][0]))
+							{
+								HudMessage(s:PB_weaponslist[i][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+
+							Else If(CheckInventory("PB_Deagle") && i == 4)
+							{
+								HudMessage(s:PB_weaponslist[i+22][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+							Else If(CheckInventory("PB_QuadSG") && i == 9)
+							{
+								HudMessage(s:PB_weaponslist[i+18][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+							Else If(CheckInventory("PB_LMG") && i == 11)
+							{
+								HudMessage(s:PB_weaponslist[29][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+							Else If(CheckInventory("PB_PulseCannon") && i == 17)
+							{
+								HudMessage(s:PB_weaponslist[28][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+							Else If(CheckInventory(PB_weaponslist[i][0])) 
+							{
+								HudMessage(s:PB_weaponslist[i][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+
+							Else 
+							{
+								HudMessage(s:PB_weaponslist[i][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
+							}
 						}
 						Else
 						{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							If (CheckWeapon("PB_Deagle") && i == 4)//necessary for the special case of the Quad SSG upgrade
+							{
+								HudMessage(s:PB_weaponslist[i+22][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+							Else If (CheckWeapon("PB_QuadSG") && i == 9)//necessary for the special case of the Quad SSG upgrade
+							{
+								HudMessage(s:PB_weaponslist[i+18][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+							Else If (CheckWeapon("PB_LMG") && i == 11)//necessary for the special case of the Quad SSG upgrade
+							{
+								HudMessage(s:PB_weaponslist[29][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+							Else If (CheckWeapon("PB_PulseCannon") && i == 17)//necessary for the special case of the Quad SSG upgrade
+							{
+								HudMessage(s:PB_weaponslist[28][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							}
+							Else If(CheckWeapon(PB_weaponslist[i][0]))
+							{
+								HudMessage(s:PB_weaponslist[i][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+							} 
+
+							Else If (CheckInventory("PB_Deagle") && i == 4)//necessary for the special case of the PulseCannon upgrade
+							{
+								HudMessage(s:PB_weaponslist[i+22][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+							Else If (CheckInventory("PB_QuadSG") && i == 9)//necessary for the special case of the PulseCannon upgrade
+							{
+								HudMessage(s:PB_weaponslist[i+18][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+							Else If (CheckInventory("PB_LMG") && i == 11)//necessary for the special case of the PulseCannon upgrade
+							{
+								HudMessage(s:PB_weaponslist[29][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+							Else If(CheckInventory("PB_PulseCannon") && i == 17)
+							{
+								HudMessage(s:PB_weaponslist[28][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+							Else If(CheckInventory(PB_weaponslist[i][0])) 
+							{
+								HudMessage(s:PB_weaponslist[i][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+							}
+
+							Else 
+							{
+								HudMessage(s:PB_weaponslist[i][5];
+								HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
+							}
 						}
 					}
-					Else If(CheckInventory(PB_weaponslist[i][0]))
-					{
+					Else If((PB_weaponslist[i][6]) == "HIDDEN" && !CheckInventory((PB_weaponslist[i][0]))){
 						If(list_aspect == ASPECT_4_3)
 						{
-							If (CheckInventory("LMG") && i == 11)//necessary for the special case of the LMG upgrade
-							{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-							}
-							Else If (CheckInventory("PulseCannon") && i == 17)//necessary for the special case of the PulseCannon upgrade
-							{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-							}
-							Else If (CheckInventory("Quad_SSG") && i == 7)//necessary for the special case of the Quad SSG upgrade
-							{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-							}
-							Else
-							{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-							}
-						}
-						Else
-						{
-							If (CheckInventory("LMG") && i == 11)//necessary for the special case of the LMG upgrade
-							{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-							}
-							Else If (CheckInventory("PulseCannon") && i == 17)//necessary for the special case of the PulseCannon upgrade
-							{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-							}
-							Else If (CheckInventory("Quad_SSG") && i == 7)//necessary for the special case of the PulseCannon upgrade
-							{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-							}
-							Else
-							{
-							HudMessage(s:PB_weaponslist[i][5];
-							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-							}
-						}
-					}
-					Else
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-							HudMessage(s:PB_weaponslist[i][5];
+							HudMessage(s:"Unavailable";
 							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
 						}
-						Else
+						Else 
 						{
-							HudMessage(s:PB_weaponslist[i][5];
+							HudMessage(s:"Unavailable";
 							HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
 						}
-					}
-				}
-			}
-			Else If( PlayerClass(PlayerNumber()) == 1 )//( PlayerClass(PlayerNumber()) == 1 )
-			{
-				If(CheckInventory("exverify")) WpnCntr2 = PB_CLASSIC_StandWeap + 2;
-				Else Wpncntr2 = PB_CLASSIC_StandWeap;
-				
-				For(j = 0; j <= WpnCntr2; j++)
-				{
-					list_aspect2 = GetAspectRatio();
-					SetHudSize(930,730,1);
-					SetFont("UDVSmall");
-
-					If(CheckWeapon(PB_CLASSIC_weaponslist[j][0]))
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:PB_CLASSIC_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 1.0);
-						}
-						Else
-						{
-						HudMessage(s:PB_CLASSIC_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 1.0);
-						}
-					}
-					Else If(CheckInventory(PB_CLASSIC_weaponslist[j][0]))
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:PB_CLASSIC_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 0.35);
-						}
-						Else
-						{
-						HudMessage(s:PB_CLASSIC_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 0.35);
-						}
-					}
-					Else
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:PB_CLASSIC_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:PB_CLASSIC_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 0.15);
-						}
-					}
-				}
-			}
-
-			Else If( PlayerClass(PlayerNumber()) == 2 )
-			{
-				If(CheckInventory("exverify"))	WpnCntr3 = PB_TRAD_StandWeap + 2;
-				Else WpnCntr3 = PB_TRAD_StandWeap;
-				
-				For(int k; k <= WpnCntr3; k++)
-				{
-					list_aspect3 = GetAspectRatio();
-					SetHudSize(930,730,1);
-					SetFont("UDVSmall");
-
-					If(CheckWeapon(PB_TRAD_weaponslist[k][0]))
-					{
-						If(list_aspect3 == ASPECT_4_3)
-						{
-						HudMessage(s:PB_TRAD_weaponslist[k][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (k+455), "SaeHUDGr", 105.0, ((k*10)<<16)+22.1, 0.2, 1.0);
-						}
-						Else
-						{
-						HudMessage(s:PB_TRAD_weaponslist[k][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (k+455), "SaeHUDGr", -20.0, ((k*10)<<16)+22.1, 0.2, 1.0);
-						}
-					}
-					Else If(CheckInventory(PB_TRAD_weaponslist[k][0]))
-					{
-						If(list_aspect3 == ASPECT_4_3)
-						{
-						HudMessage(s:PB_TRAD_weaponslist[k][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (k+455), "SaeHUDGr", 105.0, ((k*10)<<16)+22.1, 0.2, 0.35);
-						}
-						Else
-						{
-						HudMessage(s:PB_TRAD_weaponslist[k][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (k+455), "SaeHUDGr", -20.0, ((k*10)<<16)+22.1, 0.2, 0.35);
-						}
-					}
-					Else
-					{
-						If(list_aspect3 == ASPECT_4_3)
-						{
-						HudMessage(s:PB_TRAD_weaponslist[k][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (k+455), "SaeHUDGr", 105.0, ((k*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:PB_TRAD_weaponslist[k][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (k+455), "SaeHUDGr", -20.0, ((k*10)<<16)+22.1, 0.2, 0.15);
-						}
-					}
-				}
-			}
-		}
-		Else If (is_BPV9)
-		{
-			//GiveInventory("sae_BDv20",1);
-			If( PlayerClass(PlayerNumber()) == 0 )
-			{
-				If(CheckInventory("exverify"))	WpnCntr = BP_StandWeap + 2;
-				Else WpnCntr = BP_StandWeap;
-		
-				For(i = 0; i <= WpnCntr; i++)
-				{
-					list_aspect = GetAspectRatio();
-					SetHudSize(930,730,1);
-					SetFont("UDVSmall");
-
-					If(CheckWeapon(BP_weaponslist[i][0]))
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						HudMessage(s:BP_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-						}
-						Else
-						{
-						HudMessage(s:BP_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-						}
-					}
-					Else If(CheckInventory(BP_weaponslist[i][0]))
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						HudMessage(s:BP_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-						}
-						Else
-						{
-						HudMessage(s:BP_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-						}
-					}
-					Else
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						HudMessage(s:BP_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:BP_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-						}
-					}
-				}
-			}
-			Else If( PlayerClass(PlayerNumber()) == 1 )
-			{
-				If(CheckInventory("exverify"))	WpnCntr2 = BP_PURIST_StandWeap + 2;
-				Else WpnCntr2 = BP_PURIST_StandWeap;
-					
-				For(j = 0; j <= WpnCntr2; j++)
-				{
-					list_aspect2 = GetAspectRatio();
-					SetHudSize(930,730,1);
-					If(CheckWeapon(BP_PURIST_weaponslist[j][0]))
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:BP_PURIST_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 1.0);
-						}
-						Else
-						{
-						HudMessage(s:BP_PURIST_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 1.0);
-						}
-					}
-					Else If(CheckInventory(BP_PURIST_weaponslist[j][0]))
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:BP_PURIST_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 0.35);
-						}
-						Else
-						{
-						HudMessage(s:BP_PURIST_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 0.35);
-						}
-					}
-					Else
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:BP_PURIST_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:BP_PURIST_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 0.15);
-						}
-					}
-				}
-			}
-		}
-		Else If (is_johnny)
-		{
-			//GiveInventory("sae_BDJ20",1);
-			If(CheckInventory("exverify"))	WpnCntr = JOHNNY_StandWeap + 2;
-			Else WpnCntr = JOHNNY_StandWeap;
-
-			For(i = 0; i <= WpnCntr; i++)
-			{
-				list_aspect = GetAspectRatio();
-				SetHudSize(930,730,1);
-				SetFont("UDVSmall");
-				If(CheckWeapon(JOHNNY_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:JOHNNY_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-					Else
-					{
-					HudMessage(s:JOHNNY_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-				}
-				Else If(CheckInventory(JOHNNY_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:JOHNNY_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-					Else
-					{
-					HudMessage(s:JOHNNY_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-				}
-				Else
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:JOHNNY_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-					Else
-					{
-					HudMessage(s:JOHNNY_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-				}
-			}
-		}
-		Else If (is_brutal64)
-		{
-			//GiveInventory("udv_BD64",1);
-			If( PlayerClass(PlayerNumber()) == 0 )
-			{
-				If(CheckInventory("exverify"))	WpnCntr = BRUTAL64_StandWeap + 2;
-				Else WpnCntr = BRUTAL64_StandWeap;
-		
-				For(i = 0; i <= WpnCntr; i++)
-				{
-					list_aspect = GetAspectRatio();
-					SetHudSize(930,730,1);
-					SetFont("UDVSmall");
-					If(CheckWeapon(BRUTAL64_weaponslist[i][0]))
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						HudMessage(s:BRUTAL64_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-						}
-						Else
-						{
-						HudMessage(s:BRUTAL64_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-						}
-					}
-					Else If(CheckInventory(BRUTAL64_weaponslist[i][0]))
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						HudMessage(s:BRUTAL64_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-						}
-						Else
-						{
-						HudMessage(s:BRUTAL64_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-						}
-					}
-					Else
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						HudMessage(s:BRUTAL64_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:BRUTAL64_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-						}
-					}
-				}
-			}
-			Else If( PlayerClass(PlayerNumber()) == 1 )
-			{
-				If(CheckInventory("exverify"))	WpnCntr2 = BRUTAL64_TACTICAL_StandWeap + 2;
-				Else WpnCntr2 = BRUTAL64_TACTICAL_StandWeap;
-					
-				For(j = 0; j <= WpnCntr2; j++)
-				{
-					list_aspect2 = GetAspectRatio();
-					SetHudSize(930,730,1);
-					If(CheckWeapon(BRUTAL64_TACTICAL_weaponslist[j][0]))
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:BRUTAL64_TACTICAL_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 1.0);
-						}
-						Else
-						{
-						HudMessage(s:BRUTAL64_TACTICAL_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 1.0);
-						}
-					}
-					Else If(CheckInventory(BRUTAL64_TACTICAL_weaponslist[j][0]))
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:BRUTAL64_TACTICAL_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 0.35);
-						}
-						Else
-						{
-						HudMessage(s:BRUTAL64_TACTICAL_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 0.35);
-						}
-					}
-					Else
-					{
-						If(list_aspect2 == ASPECT_4_3)
-						{
-						HudMessage(s:BRUTAL64_TACTICAL_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", 105.0, ((j*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:BRUTAL64_TACTICAL_weaponslist[j][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (j+455), "SaeHUDGr", -20.0, ((j*10)<<16)+22.1, 0.2, 0.15);
-						}
-					}
-				}
-			}
-		}
-		Else If(is_PB203)
-		{
-			//GiveInventory("sae_PA1N",1);
-			If( PlayerClass(PlayerNumber()) == 0 )
-			{
-				If(CheckInventory("exverify"))	WpnCntr = PB203_StandWeap + 2;
-				Else WpnCntr = PB203_StandWeap;
-				
-				For(i = 0; i <= WpnCntr; i++)
-				{
-					list_aspect = GetAspectRatio();
-					SetHudSize(930,730,1);
-					SetFont("UDVSmall");
-					If(CheckWeapon(PB203_weaponslist[i][0]))
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-						}
-						Else
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-						}
-					}
-					Else If(CheckInventory(PB203_weaponslist[i][0]))
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						If(CheckInventory("LMG") && i != 9)  //necessary for the special case of the LMG upgrade
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-						}
-						Else If (CheckInventory("LMG") && i == 9)//necessary for the special case of the LMG upgrade
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-						}
-						}
-						Else
-						{
-						If(CheckInventory("LMG") && i != 9)  //necessary for the special case of the LMG upgrade
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-						}
-						Else If (CheckInventory("LMG") && i == 9)//necessary for the special case of the LMG upgrade
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-						}
-						}
-					}
-					Else
-					{
-						If(list_aspect == ASPECT_4_3)
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-						}
-						Else
-						{
-						HudMessage(s:PB203_weaponslist[i][5];
-						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-						}
-					}
-				}
-			}
-		}
-		Else If(is_brutalv20)
-		{
-			//GiveInventory("sae_BDv20",1);
-			If( PlayerClass(PlayerNumber()) == 0 )
-			{
-				  If(CheckInventory("exverify")) WpnCntr = BRUTALV20_StandWeap + 2;
-				  Else WpnCntr = BRUTALV20_StandWeap;
-				
-			  For(i = 0; i <= WpnCntr; i++)
-			  {
-				list_aspect = GetAspectRatio();
-				SetHudSize(930,730,1);
-			SetFont("UDVSmall");
-				If(CheckWeapon(BRUTALV20_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BRUTALV20_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-					Else
-					{
-					HudMessage(s:BRUTALV20_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-				}
-				Else If(CheckInventory(BRUTALV20_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BRUTALV20_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-					Else
-					{
-					HudMessage(s:BRUTALV20_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-				}
-				Else
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BRUTALV20_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-					Else
-					{
-					HudMessage(s:BRUTALV20_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-				}
-			  }
-			}
-			If( PlayerClass(PlayerNumber()) == 1 )
-			{
-				  If(CheckInventory("exverify")) WpnCntr = BDV21_PURIST_StandWeap + 2;
-				  Else WpnCntr = BDV21_PURIST_StandWeap;
-				
-			  For(i = 0; i <= WpnCntr; i++)
-			  {
-				list_aspect = GetAspectRatio();
-				SetHudSize(930,730,1);
-			SetFont("UDVSmall");
-				If(CheckWeapon(BDV21_PURIST_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-				}
-				Else If(CheckInventory(BDV21_PURIST_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-				}
-				Else
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-					Else
-					{
-					HudMessage(s:BDV21_PURIST_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-				}
-			  }
-			}
-		}//end is_brutalv20
-		Else If (is_smooth)
-		{
-			//GiveInventory("sae_vanilla",1);
-			If(CheckInventory("exverify"))	WpnCntr = SMOOTH_StandWeap + 2;
-			Else WpnCntr = SMOOTH_StandWeap;
-				
-			For(i = 0; i <= WpnCntr; i++)
-			{
-				list_aspect = GetAspectRatio();
-				SetHudSize(930,730,1);
-				SetFont("UDVSmall");
-				If(CheckWeapon(SMOOTH_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:SMOOTH_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-					Else
-					{
-					HudMessage(s:SMOOTH_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
-					}
-				}
-				Else If(CheckInventory(SMOOTH_weaponslist[i][0]))
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:SMOOTH_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-					Else
-					{
-					HudMessage(s:SMOOTH_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
-					}
-				}
-				Else
-				{
-					If(list_aspect == ASPECT_4_3)
-					{
-					HudMessage(s:SMOOTH_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
-					}
-					Else
-					{
-					HudMessage(s:SMOOTH_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
 					}
 				}
 			}
@@ -2203,39 +1455,39 @@ Function void BuildWeaponList (void)
 				{
 					If(list_aspect == ASPECT_4_3)
 					{
-					HudMessage(s:NONE_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+						HudMessage(s:NONE_weaponslist[i][5];
+						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 1.0);
 					}
 					Else
 					{
-					HudMessage(s:NONE_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
+						HudMessage(s:NONE_weaponslist[i][5];
+						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 1.0);
 					}
 				}
 				Else If(CheckInventory(NONE_weaponslist[i][0]))
 				{
 					If(list_aspect == ASPECT_4_3)
 					{
-					HudMessage(s:NONE_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+						HudMessage(s:NONE_weaponslist[i][5];
+						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.35);
 					}
 					Else
 					{
-					HudMessage(s:NONE_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
+						HudMessage(s:NONE_weaponslist[i][5];
+						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.35);
 					}
 				}
 				Else
 				{
 					If(list_aspect == ASPECT_4_3)
 					{
-					HudMessage(s:NONE_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
+						HudMessage(s:NONE_weaponslist[i][5];
+						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", 105.0, ((i*10)<<16)+22.1, 0.2, 0.15);
 					}
 					Else
 					{
-					HudMessage(s:NONE_weaponslist[i][5];
-					HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
+						HudMessage(s:NONE_weaponslist[i][5];
+						HUDMSG_PLAIN | HUDMSG_COLORSTRING | HUDMSG_ALPHA | HUDMSG_NOTWITHFULLMAP | HUDMSG_NOTWITHOVERLAYMAP, (i+455), "SaeHUDGr", -20.0, ((i*10)<<16)+22.1, 0.2, 0.15);
 					}
 				}
 			}
