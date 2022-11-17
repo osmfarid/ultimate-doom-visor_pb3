@@ -612,7 +612,7 @@ ELSE
 		
 		// LEVEL STATS AND TOGGLE
 		//InInventory sae_ToggleStats
-		IfCvarInt udv_togglekills, 1
+				IfCvarInt udv_togglekills, 1
 		{
 			Alpha 0.5
 			{
@@ -620,8 +620,8 @@ ELSE
 				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, KILLS, 119, 19;
 				IfCvarInt udv_totalstats, 1
 				{
-				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 121, 20;
-				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, MONSTERS, ALIGNMENT(LEFT), 121, 20;
+					DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 121, 20;
+					DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, MONSTERS, ALIGNMENT(LEFT), 121, 20;
 				}
 			}
 		}
@@ -813,106 +813,85 @@ ELSE
 
 		InInventory sae_ToggleAmmo
 		{
-			Alpha 0.35
+			Alpha 0.35 
 			{
+				InInventory MineAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Proximity Mines", 290, 122;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo MineAmmo, 298, 122;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 122;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MineAmmo, alignment(left), 300, 122;
+				}
+				InInventory StunGrenadeAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Stun Grenades", 290, 125;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo StunGrenadeAmmo, 298, 125;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 125;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity StunGrenadeAmmo, alignment(left), 300, 125;
+				}
+				InInventory HandGrenadeAmmo, 1
+				{
+					drawstring digifont_small, SaeHUDGr, "Frag Grenades", 290, 128;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 298, 128;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 128;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity HandGrenadeAmmo, alignment(left), 300, 128;
+				}
 				InInventory PistolBullets, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "P.Bullets", 290, 122;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo PistolBullets, 298, 122;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 122;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity PistolBullets, alignment(left), 300, 122;
+					drawstring digifont_small, SaeHUDGr, "P.Bullets", 290, 131;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo PistolBullets, 298, 131;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 131;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity PistolBullets, alignment(left), 300, 131;
 				}
 				InInventory NewClip, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Bullets", 290, 125;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo NewClip, 298, 125;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 125;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity NewClip, alignment(left), 300, 125;
+					drawstring digifont_small, SaeHUDGr, "Bullets", 290, 134;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo NewClip, 298, 134;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 134;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity NewClip, alignment(left), 300, 134;
 				}
 				InInventory NewShell, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Shells", 290, 128;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo NewShell, 298, 128;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 128;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity NewShell, alignment(left), 300, 128;
+					drawstring digifont_small, SaeHUDGr, "Shells", 290, 137;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo NewShell, 298, 137;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 137;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity NewShell, alignment(left), 300, 137;
 				}
 				InInventory RocketAmmo, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Rockets", 290, 131;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo RocketAmmo, 298, 131;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 131;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity RocketAmmo, alignment(left), 300, 131;
-				}
-				InInventory SpecialGrenadeRounds, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "Spc. Grenade", 290, 134;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo SpecialGrenadeRounds, 298, 134;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 134;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity SpecialGrenadeRounds, alignment(left), 300, 134;
-				}
-				InInventory HighExplosiveGrenadeRounds, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "High Expl.", 290, 137;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo HighExplosiveGrenadeRounds, 298, 137;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 137;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity HighExplosiveGrenadeRounds, alignment(left), 300, 137;
+					drawstring digifont_small, SaeHUDGr, "Rockets", 290, 140;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo RocketAmmo, 298, 140;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 140;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity RocketAmmo, alignment(left), 300, 140;
 				}
 				InInventory Cell, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Cells", 290, 140;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo Cell, 298, 140;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 140;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Cell, alignment(left), 300, 140;
+					drawstring digifont_small, SaeHUDGr, "Energy Cells", 290, 149;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo Cell, 298, 149;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 149;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Cell, alignment(left), 300, 149;
 				}
 				InInventory MiniHellRocketAmmo, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Missiles", 290, 143;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo MiniHellRocketAmmo, 298, 143;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 143;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MiniHellRocketAmmo, alignment(left), 300, 143;
+					drawstring digifont_small, SaeHUDGr, "Revenant Missiles", 290, 152;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo MiniHellRocketAmmo, 298, 152;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 152;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MiniHellRocketAmmo, alignment(left), 300, 152;
 				}
 				InInventory Gas, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Gas", 290, 146;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo Gas, 298, 146;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 146;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Gas, alignment(left), 300, 146;
+					drawstring digifont_small, SaeHUDGr, "Gas", 290, 155;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo Gas, 298, 155;
+					drawstring digifont_small, SaeHUDGr, "/", 300, 155;
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Gas, alignment(left), 300, 155;
 				}
 				InInventory DemonPower, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Energy", 290, 149;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo DemonPower, 298, 149;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 149;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity DemonPower, alignment(left), 300, 149;
-				}
-				InInventory MineAmmo, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "Mines", 290, 152;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo MineAmmo, 298, 152;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 152;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MineAmmo, alignment(left), 300, 152;
-				}
-				/* InInventory JAWBONEAMMO, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "JAWBONES", 290, 155;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo JAWBONEAMMO, 298, 155;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 155;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity JAWBONEAMMO, alignment(left), 300, 155;
-				} */
-				/* InInventory PIPEBOMBAMMO, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "PIPEBOMBS", 290, 158;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo PIPEBOMBAMMO, 298, 158;
+					drawstring digifont_small, SaeHUDGr, "Demon Power", 290, 158;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo DemonPower, 298, 158;
 					drawstring digifont_small, SaeHUDGr, "/", 300, 158;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity PIPEBOMBAMMO, alignment(left), 300, 158;
-				} */
-				/* InInventory SATCHELCHARGEAMMO, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "SATCHEL CHARGES", 290, 161;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo SATCHELCHARGEAMMO, 298, 161;
-					drawstring digifont_small, SaeHUDGr, "/", 300, 161;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity SATCHELCHARGEAMMO, alignment(left), 300, 161;
-				} */
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity DemonPower, alignment(left), 300, 158;
+				}
 			}
 		}
 		//red tint
@@ -1423,78 +1402,103 @@ ELSE
 				*/
 			}
 			//////////////////DUAL AMMO DISPLAY TO SHOW EACH WEAPON///////////////////////////////////
-			IsSelected Rifle
+			IsSelected PB_Pistol
 			{
-				InInventory DualWieldingDMRs
+				InInventory DualWieldingPistols
 				{
-					// drawstring DIGIFONT_LARGE, SaeHUDGr, "/", 263, 181;
-					// drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, Alignment(right), fillzeros, 260, 181;
-					
-					drawnumber 3, digifont_small, saehudgr, ammo RifleAmmo, 255, 185;
-					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-					drawnumber 3, digifont_small, saehudgr, ammo LeftRifleAmmo, alignment(left), 257, 185;
-				}
-			}
-			IsSelected PB_SMG
-			{
-				InInventory DualWieldingSMGs
-				{
-					drawnumber 3, digifont_small, saehudgr, ammo SMGAmmo, 255, 185;
-					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-					drawnumber 3, digifont_small, saehudgr, ammo LeftSMGAmmo, alignment(left), 257, 185;
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, SecondaryPistolAmmo, Alignment(right), fillzeros, 261, 181;
 				}
 			}
 			IsSelected PB_Revolver
 			{
 				InInventory DualWieldingRevolver
 				{
-					drawnumber 3, digifont_small, saehudgr, ammo LeftRevolverAmmo, 255, 185;
-					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-					drawnumber 3, digifont_small, saehudgr, ammo RevolverAmmo, alignment(left), 257, 185;
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRevolverAmmo, Alignment(right), fillzeros, 261, 181;
 				}
 			}
-			IsSelected PB_Pistol
+			IsSelected PB_Deagle
 			{
-				InInventory DualWieldingPistols
+				InInventory DualWieldingDeagles
 				{
-					drawnumber 3, digifont_small, saehudgr, ammo SecondaryPistolAmmo, 255, 185;
-					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-					drawnumber 3, digifont_small, saehudgr, ammo PrimaryPistolAmmo, alignment(left), 257, 185;
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftDeagleAmmo, Alignment(right), fillzeros, 261, 181;
 				}
 			}
-			/* IsSelected DualCarbines
+			IsSelected PB_MP40
 			{
-				drawnumber 3, digifont_small, saehudgr, ammo LeftCarbineAmmo, 255, 185;
-				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-				drawnumber 3, digifont_small, saehudgr, ammo XRifleAmmo, alignment(left), 257, 185;
-			} */
-			/* IsSelected DualM2PlasmaRifles
-			{
-				drawnumber 3, digifont_small, saehudgr, ammo LeftM2PlasmagunAmmo, 255, 185;
-				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-				drawnumber 3, digifont_small, saehudgr, ammo RightM2PlasmagunAmmo, alignment(left), 257, 185;
-			} */
-			/* IsSelected DualAutoShotguns
-			{
-				drawnumber 3, digifont_small, saehudgr, ammo LeftASGAmmo, 255, 185;
-				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-				drawnumber 3, digifont_small, saehudgr, ammo AutoShotgunAmmo, alignment(left), 257, 185;
-			} */
-			/* IsSelected DualSSG
-			{
-				drawnumber 3, digifont_small, saehudgr, ammo LeftSSGAmmo, 255, 185;
-				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-				drawnumber 3, digifont_small, saehudgr, ammo RightSSGAmmo, alignment(left), 257, 185;
-			} */
-			/* IsSelected DualPlasmaRifles
-			{
-				InInventory sae_PA1N
+				InInventory DualWieldingMP40
 				{
-				drawnumber 3, digifont_small, saehudgr, ammo LeftPlasmaGunAmmo, 255, 185;
-				drawstring digifont_small, SaeHUDGr, "/", 257, 185;
-				drawnumber 3, digifont_small, saehudgr, ammo RightPlasmaGunAmmo, alignment(left), 257, 185;
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftMP40Ammo, Alignment(right), fillzeros, 261, 181;
 				}
-			} */
+			}
+			IsSelected PB_SMG
+			{
+				InInventory DualWieldingSMGs
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftSMGAmmo, Alignment(right), fillzeros, 261, 181;
+				}
+			}
+			IsSelected PB_Autoshotgun
+			{
+				InInventory DualWieldingAutoshotguns
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftASGAmmo, Alignment(right), fillzeros, 261, 181;
+				}
+			}
+			IsSelected PB_SSG
+			{
+				InInventory DualWieldingSSG
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftSSGAmmo, Alignment(right), fillzeros, 261, 181;
+				}
+			}
+			IsSelected PB_QuadSG
+			{
+				InInventory QuadAkimboMode
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftQSSGAmmoCounter, Alignment(right), fillzeros, 261, 181;
+				}
+			}
+			IsSelected Rifle
+			{
+				InInventory DualWieldingDMRs
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftRifleAmmo, Alignment(right), fillzeros, 261, 181;
+				}
+			}
+			IsSelected PB_Carbine
+			{
+				InInventory DualWieldingCarbines
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftXRifleAmmo, Alignment(right), fillzeros, 261, 181;
+				}
+			}
+			IsSelected PB_M1Plasma
+			{
+				InInventory DualWieldingPlasma
+				{
+					drawstring DIGIFONT_LARGE, SaeHUDGr, "-", 264, 181;
+					drawnumber 3, DIGIFONT_LARGE, SaeHUDGr, LeftPlasmaAmmo, Alignment(right), fillzeros, 261, 181;
+				}
+			}
+			IsSelected PB_Freezer
+			{
+				InInventory FreezerPistolToken
+				{
+					drawnumber 3, digifont_small, saehudgr, ammo PrimaryPistolAmmo, 255, 185;
+					drawstring digifont_small, SaeHUDGr, "/", 257, 185;
+					drawnumber 3, digifont_small, saehudgr, ammo PistolBullets, alignment(left), 257, 185;
+				}
+			}
 		}
 
 		// Light Amp Time
@@ -1522,10 +1526,11 @@ ELSE
 		
 		IfCvarInt udv_togglekills, 1
 		{
-		Alpha 0.5
+			Alpha 0.5
 			{
-				DRAWIMAGE "KILLS", 70, 15;
-				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, KILLS, 94, 19;
+				// DRAWIMAGE "KILLS", 70, 15;
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "KILLS: ", 92, 20,0, ALIGNMENT(RIGHT);
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, KILLS, ALIGNMENT(RIGHT), 96, 20;
 				IfCvarInt udv_totalstats, 1
 				{
 				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 98, 20;
@@ -1537,12 +1542,13 @@ ELSE
 		{
 			Alpha 0.5
 			{
-				DRAWIMAGE "SCRTS", 70, 15;
-				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, SECRETS, 94, 24;
+				// DRAWIMAGE "SCRTS", 70, 15;
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "SECRETS: ", 92, 22,0, ALIGNMENT(RIGHT);
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, SECRETS, ALIGNMENT(RIGHT), 96, 22;
 				IfCvarInt udv_totalstats, 1
 				{
-				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 98, 25;
-				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, TOTALSECRETS, ALIGNMENT(LEFT), 98, 25;
+					DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 98, 22;
+					DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, TOTALSECRETS, ALIGNMENT(LEFT), 98, 22;
 				}
 			}
 		}
@@ -1550,12 +1556,13 @@ ELSE
 		{
 			Alpha 0.5
 			{
-				DrawImage "ITEMS", 70, 15;
-				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, ITEMS, 94, 29;
+				// DrawImage "ITEMS", 70, 15;
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "ITEMS: ", 92, 24,0, ALIGNMENT(RIGHT);
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, ITEMS, ALIGNMENT(RIGHT), 96, 24;
 				IfCvarInt udv_totalstats, 1
 				{
-				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 98, 30;
-				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, TOTALITEMS, ALIGNMENT(LEFT), 98, 30;
+				DRAWSTRING DIGIFONT_SMALL, SaeHUDGr, "/", 98, 24;
+				DRAWNUMBER 3, DIGIFONT_SMALL, SaeHUDGr, TOTALITEMS, ALIGNMENT(LEFT), 98, 24;
 				}
 			}
 		}
@@ -1582,29 +1589,31 @@ ELSE
 		// GRENADE count placeholder, not used in Brutal Doom v19
 		Alpha 0.75
 		{
-			/* InInventory J_HandGrenadeAmmo, 1
-				{
-					drawimage "jgrenade", 275, 174;
-					drawnumber 2, digifont_small, SaeHUDGr, ammo J_HandGrenadeAmmo, 273, 176;
-					InInventory HandGrenadeAmmo,1
-					{
-						drawnumber 2, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 273, 179;
-					}
-					InInventory GrenadeAmmo,1
-					{
-						drawnumber 2, digifont_small, SaeHUDGr, ammo GrenadeAmmo, 273, 179;
-					}
-				} */
-			InInventory HandGrenadeAmmo, 1
-				{
-					drawimage "grenade", 275, 174;
-					drawnumber 2, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 273, 179;
-				}
-			/* Else InInventory GrenadeAmmo, 1 //BDJ20
-				{
-					drawimage "grenade", 275, 174;
-					drawnumber 2, digifont_small, SaeHUDGr, ammo GrenadeAmmo, 273, 179;
-				} */
+			InInventory FragGrenadeSelected, 1
+			{
+				drawimage "grenade", 275, 174;
+				drawnumber 2, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 273, 179;
+			}
+			InInventory ProximityMineSelected, 1
+			{
+				drawimage "proxmine", 275, 174;
+				drawnumber 2, digifont_small, SaeHUDGr, ammo MineAmmo, 273, 179;
+			}
+			InInventory StunGrenadeSelected, 1
+			{
+				drawimage "stungra", 275, 174;
+				drawnumber 2, digifont_small, SaeHUDGr, ammo StunGrenadeAmmo, 273, 179;
+			}
+			InInventory RevGunSelected, 1
+			{
+				drawimage "revmiss", 275, 174;
+				drawnumber 2, digifont_small, SaeHUDGr, ammo MiniHellRocketAmmo, 273, 179;
+			}
+			InInventory LeechSelected, 1
+			{
+				drawimage "leechs", 275, 174;
+				drawnumber 3, digifont_small, SaeHUDGr, ammo DemonPower, 273, 179;
+			}
 		}
 		// INVENTORY
 		InInventory sae_ToggleInv
@@ -1625,70 +1634,336 @@ ELSE
 		// BEGIN Multi-Weapon Display
 		Alpha 0.75
 		{
-			IsSelected Rifle
+			InInventory sae_PA1N
 			{
-				InInventory DualWieldingDMRs, 1
+				IsSelected PB_Chainsaw
 				{
-					drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					InInventory ChainsawResourceGather, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "RES", 304, 180;
+					}
 				}
-			}
-			IsSelected PB_Pistol
-			{
-				InInventory DualWieldingPistols, 1 
+				IsSelected PB_Pistol
 				{
-					drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
-				}
+					InInventory DualWieldingPistols, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+					InInventory ToggledPistolBurstFire, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "BURST", 304, 182;
+					}
+					InInventory NOT ToggledPistolBurstFire, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "SEMI", 304, 182;
+					}
 
-				InInventory SilencerEquipped, 1 
-				{
-					drawstring digifont_small, SaeHUDGR, "SLNT", 304, 182;
+					InInventory SilencerEquipped, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "SLNT", 304, 184;
+					}
+					
 				}
+				IsSelected PB_Revolver
+				{
+					InInventory DualWieldingRevolver, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+				}
+				IsSelected PB_Deagle
+				{
+					InInventory DualWieldingDeagles, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+				}
+				IsSelected PB_MP40
+				{
+					InInventory DualWieldingMP40, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+				}
+				IsSelected PB_SMG
+				{
+					InInventory DualWieldingSMGs, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+					InInventory LaserSightActivated, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "LASER", 304, 182;
+					}
+				}
+				IsSelected PB_Shotgun
+				{
+					InInventory HasSlugs, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "SLUG", 304, 180;
+					}
+					InInventory HasBuckShot, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "BUCK", 304, 180;
+					}
+					InInventory HasDragonBreath, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "DRGN", 304, 180;
+					}
+				}
+				IsSelected PB_Autoshotgun
+				{
+					InInventory DualWieldingAutoshotguns, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+				}
+				IsSelected PB_SSG
+				{
+					InInventory DualWieldingSSG, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+				}
+				IsSelected PB_QuadSG
+				{
+					InInventory QuadAkimboMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+					InInventory FullBlastMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "FULL", 304, 182;
+					}
+					InInventory NOT FullBlastMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "HALF", 304, 182;
+					}
+					InInventory BreathMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "DEMON", 304, 184;
+					}
+					InInventory NOT BreathMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "SHELL", 304, 184;
+					}
+					
+				}
+				IsSelected Rifle
+				{
+					InInventory DualWieldingDMRs, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+					InInventory HDMRSniperMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "SNIP", 304, 182;
+					}
+					InInventory HDMRGrenadeMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "GRND", 304, 184;
+					}
+				}
+				IsSelected PB_Carbine
+				{
+					InInventory DualWieldingCarbines, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+					InInventory SemiFire, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "SEMI", 304, 182;
+					}
+					InInventory BurstFire, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "BURST", 304, 182;
+					}
+					InInventory CarbineFullAuto, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "AUTO", 304, 182;
+					}
+				}
+				IsSelected PB_LMG
+				{
+					InInventory LMGMicroMissiles, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "MSLS", 304, 180;
+					}
+				}
+				IsSelected PB_Minigun
+				{
+					InInventory ChainGunMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "CHAIN", 304, 180;
+					}
+					InInventory TripleBarrelMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "TRIPLE", 304, 180;
+					}
+				}
+				IsSelected PB_Nailgun 
+				{
+					InInventory JavelinMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "HRPN", 304, 180;
+					}
+				}
+				/* IsSelected PB_SuperGL
+				{
+					InInventory ImpactSelected, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "FRAG", 304, 180;
+					}
+					InInventory GrenadeTypeSticky, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "STICK", 304, 180;
+					}
+					InInventory GrenadeTypeIncendiary, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "INCND", 304, 180;
+					}
+					InInventory GrenadeTypeCryo, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "CRYO", 304, 180;
+					}
+					InInventory GrenadeTypeAcid, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "ACID", 304, 180;
+					}
+					InInventory GrenadeDetonator, 1 
+					{
+						drawstring digifont_small, SaeHUDGR, "DETO", 304, 182;
+					}
+				} */
+				/* IsSelected PB_RocketLauncher
+				{
+					InInventory RocketLauncher_Standard, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "STND", 304, 180;
+					}
+					InInventory RocketLauncher_Homing, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "LOCK", 304, 180;
+					}
+					InInventory RocketLauncher_Laser, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "LASER", 304, 180;
+					}
+				} */
+				IsSelected PB_M1Plasma
+				{
+					InInventory DualWieldingPlasma, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+				}
+				IsSelected PB_M2Plasma
+				{
+					InInventory DualWieldingM2Plasma, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
+					}
+				}
+				IsSelected PB_Freezer
+				{
+					InInventory FireModeFreezerBeam, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "RAY", 304, 180;
+					}
+					InInventory NOT FireModeFreezerBeam, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "MSL", 304, 180;
+					}
+				}
+				IsSelected PB_Railgun
+				{
+					InInventory RailgunLaserMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "LASER", 304, 180;
+					}
+					InInventory NOT RailgunLaserMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "RAIL", 304, 180;
+					}
+					InInventory InfraredActivated, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "IRED", 304, 182;
+					}
+				}
+				IsSelected PB_BFG9000
+				{
+					InInventory BFGGuardMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "GUARD", 304, 180;
+					}
+					InInventory NOT BFGGuardMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "CLSIC", 304, 180;
+					}
+				}
+				IsSelected PB_Flamethrower
+				{
+					InInventory NOT FlamerNukageMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "FLAME", 304, 180;
+					}
 
-				InInventory ToggledPistolBurstFire, 1 
+					InInventory FlamerNukageMode, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "NUKE", 304, 180;
+					}
+				}
+				IsSelected Hell_rifle
 				{
-					drawstring digifont_small, SaeHUDGR, "BRST", 304, 184;
+					InInventory FireModeAcidGun, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "CSTC", 304, 180;
+					}
+
+					InInventory NOT FireModeAcidGun, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "INFRN", 304, 180;
+					}
+				}
+				IsSelected PB_Unmaker
+				{
+					InInventory UnmakerFireSelected, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "INFRN", 304, 180;
+					}
+
+					InInventory NOT UnmakerFireSelected, 1
+					{
+						drawstring digifont_small, SaeHUDGR, "INCNR", 304, 180;
+					}
 				}
 			}
-			IsSelected PB_SSG
-			{
-				InInventory DualWieldingSSG, 1
-				{
-					drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
-				}
-			}
-			/* IsSelected Plasma_Gun
-			{
-				InInventory DualPlasmaChecker, 3
-				{
-					drawstring digifont_small, SaeHUDGR, "DUAL", 304, 180;
-				}
-			} */
 		}
 		InInventory sae_ToggleAmmo  //BEGIN Reserve Ammo Toggle
 		{
 			Alpha 0.35 
 			{
-				/* InInventory SATCHELCHARGEAMMO, 1
+				InInventory MineAmmo, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "SATCHEL CHARGES", 330, 122;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo SATCHELCHARGEAMMO, 338, 122;
+					drawstring digifont_small, SaeHUDGr, "Proximity Mines", 330, 122;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo MineAmmo, 338, 122;
 					drawstring digifont_small, SaeHUDGr, "/", 340, 122;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity SATCHELCHARGEAMMO, alignment(left), 340, 122;
-				} */
-				/* InInventory JAWBONEAMMO, 1
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MineAmmo, alignment(left), 340, 122;
+				}
+				InInventory StunGrenadeAmmo, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "JAWBONES", 330, 125;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo JAWBONEAMMO, 338, 125;
+					drawstring digifont_small, SaeHUDGr, "Stun Grenades", 330, 125;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo StunGrenadeAmmo, 338, 125;
 					drawstring digifont_small, SaeHUDGr, "/", 340, 125;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity JAWBONEAMMO, alignment(left), 340, 125;
-				} */
-				/* InInventory PIPEBOMBAMMO, 1
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity StunGrenadeAmmo, alignment(left), 340, 125;
+				}
+				InInventory HandGrenadeAmmo, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "PIPEBOMBS", 330, 128;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo PIPEBOMBAMMO, 338, 128;
+					drawstring digifont_small, SaeHUDGr, "Frag Grenades", 330, 128;
+					drawnumber 3, digifont_small, SaeHUDGr, ammo HandGrenadeAmmo, 338, 128;
 					drawstring digifont_small, SaeHUDGr, "/", 340, 128;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity PIPEBOMBAMMO, alignment(left), 340, 128;
-				} */
+					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity HandGrenadeAmmo, alignment(left), 340, 128;
+				}
 				InInventory PistolBullets, 1
 				{
 					drawstring digifont_small, SaeHUDGr, "P.Bullets", 330, 131;
@@ -1717,30 +1992,16 @@ ELSE
 					drawstring digifont_small, SaeHUDGr, "/", 340, 140;
 					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity RocketAmmo, alignment(left), 340, 140;
 				}
-				InInventory SpecialGrenadeRounds, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "Spc. Grenade", 330, 143;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo SpecialGrenadeRounds, 338, 143;
-					drawstring digifont_small, SaeHUDGr, "/", 340, 143;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity SpecialGrenadeRounds, alignment(left), 340, 143;
-				}
-				InInventory HighExplosiveGrenadeRounds, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "High Expl.", 330, 146;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo HighExplosiveGrenadeRounds, 338, 146;
-					drawstring digifont_small, SaeHUDGr, "/", 340, 146;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity HighExplosiveGrenadeRounds, alignment(left), 340, 146;
-				}
 				InInventory Cell, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Cells", 330, 149;
+					drawstring digifont_small, SaeHUDGr, "Energy Cells", 330, 149;
 					drawnumber 3, digifont_small, SaeHUDGr, ammo Cell, 338, 149;
 					drawstring digifont_small, SaeHUDGr, "/", 340, 149;
 					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity Cell, alignment(left), 340, 149;
 				}
 				InInventory MiniHellRocketAmmo, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Missiles", 330, 152;
+					drawstring digifont_small, SaeHUDGr, "Revenant Missiles", 330, 152;
 					drawnumber 3, digifont_small, SaeHUDGr, ammo MiniHellRocketAmmo, 338, 152;
 					drawstring digifont_small, SaeHUDGr, "/", 340, 152;
 					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MiniHellRocketAmmo, alignment(left), 340, 152;
@@ -1754,17 +2015,10 @@ ELSE
 				}
 				InInventory DemonPower, 1
 				{
-					drawstring digifont_small, SaeHUDGr, "Energy", 330, 158;
+					drawstring digifont_small, SaeHUDGr, "Demon Power", 330, 158;
 					drawnumber 3, digifont_small, SaeHUDGr, ammo DemonPower, 338, 158;
 					drawstring digifont_small, SaeHUDGr, "/", 340, 158;
 					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity DemonPower, alignment(left), 340, 158;
-				}
-				InInventory MineAmmo, 1
-				{
-					drawstring digifont_small, SaeHUDGr, "Grenades", 330, 161;
-					drawnumber 3, digifont_small, SaeHUDGr, ammo MineAmmo, 338, 161;
-					drawstring digifont_small, SaeHUDGr, "/", 340, 161;
-					drawnumber 3, digifont_small, SaeHUDGr, ammoCapacity MineAmmo, alignment(left), 340, 161;
 				}
 			}
 		}
